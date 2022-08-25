@@ -1,3 +1,4 @@
+## Demo for DevOps class group assingment
 # nodehill-schedule
 # version 3.0
 Scheduling & invoicing
