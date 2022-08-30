@@ -10,7 +10,7 @@ Feature: Admin delete request
     Scenario: Delete a course
         Given that I am logged in as admin
         And on the courses information page 
-        When I click on the delete button on the row of an "course"
+        When I click on the delete button on the row of a "course"
         Then that "cours" sould no longer be in the list of courses
 
     Scenario: Delete a holiday
@@ -22,7 +22,7 @@ Feature: Admin delete request
     Scenario: Delete a invoice item
         Given that I am logged in as admin
         And on the invoice items information page 
-        When I click on the delete button on the row of a "invoice item"
+        When I click on the delete button on the row of an "invoice item"
         Then that "invoice item" sould no longer be in the list of invoice items
 
     Scenario: Delete a invoice
@@ -31,22 +31,22 @@ Feature: Admin delete request
         When I click on the delete button on a row of an "invoice"
         Then that "invoice" sould no longer be in the list of invoices
 
-    Scenario: Delete a schedule                         // is this realy how its going to work??
+    Scenario: Delete a schedule                         
         Given that I am logged in as admin
         And on the schedules information page 
-        When I click on the delete button on a row of an "schedule"
+        When I click on the delete button on a row of a "schedule"
         Then that "schedule" sould no longer be in the list of schedules     
 
     Scenario: Delete a school
         Given that I am logged in as admin
         And on the school information page 
-        When I click on the delete button on a row of an "school"
+        When I click on the delete button on a row of a "school"
         Then that "school" sould no longer be in the list of schools
 
     Scenario: Delete a teacher
         Given that I am logged in as admin
         And on the teachers information page 
-        When I click on the delete button on a row of an "teacher"
+        When I click on the delete button on a row of a "teacher"
         Then that "teacher" sould no longer be in the list of teachers
 
    
