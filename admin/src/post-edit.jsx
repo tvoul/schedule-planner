@@ -25,8 +25,6 @@ export const TeacherEdit = () => (
       <BooleanInput label="hide" source="hide" />
       <PasswordInput source="password" />
       <TextInput source="roles" />
-      <EditButton />
-
     </SimpleForm>
   </Edit>
 );

@@ -7,7 +7,7 @@ import { PostCreate} from "./post-create";
 import { UserList } from './users';
 import { TeacherList } from "./teachers";
 import { TeacherEdit } from "./post-edit";
-//import {TeacherCreate} from "./post-create"; 
+import  {TeacherCreate } from "./post-create"; 
 import jsonServerProvider from 'ra-data-json-server';
 import PostIcon from '@mui/icons-material/Book';
 import UserIcon from '@mui/icons-material/Group';
@@ -21,7 +21,7 @@ const App = () => (
   <Admin dashboard={Dashboard} dataProvider={dataProvider}>
     <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
     <Resource name="users" list={UserList} icon={UserIcon} />
-    <Resource name="teachers" list={TeacherList} icon={TeacherIcon} edit={TeacherEdit} />
+    <Resource name="teachers" list={TeacherList} icon={TeacherIcon} edit={TeacherEdit} create={TeacherCreate} />
    
     
   </Admin>  
