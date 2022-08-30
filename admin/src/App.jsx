@@ -2,15 +2,11 @@
 import * as React from "react";
 import { Admin, Resource, EditGuesser } from 'react-admin';
 import { PostList } from './posts';
-import { PostEdit, SchoolEdit } from "./post-edit";
-import { PostCreate, SchoolCreate} from "./post-create";
-import { UserList } from './users';
 import { TeacherList } from "./teachers";
-import { TeacherEdit } from "./post-edit";
-import { TeacherCreate } from "./post-create";
 import { SchoolList } from "./schools";
-import { SchoolEdit } from "./post-edit";
-import { SchoolCreate } from "./post-create";
+import { PostEdit, TeacherEdit, SchoolEdit } from "./post-edit";
+import { PostCreate, TeacherCreate, SchoolCreate} from "./post-create";
+import { UserList } from './users';
 import jsonServerProvider from 'ra-data-json-server';
 import PostIcon from '@mui/icons-material/Book';
 import UserIcon from '@mui/icons-material/Group';
@@ -18,7 +14,7 @@ import TeacherIcon from '@mui/icons-material/Person';
 import SchoolIcon from '@mui/icons-material/School';
 import Dashboard from "./Dashboard";
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
-
+//const dataProvider = simpleRestProvider('https://localhost:7666/data/');
 // <Resource name="users" list={ListGuesser} />
 
 const App = () => (
