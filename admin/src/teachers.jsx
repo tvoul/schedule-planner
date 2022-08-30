@@ -1,4 +1,4 @@
-import { Datagrid, EmailField, List, TextField, BooleanField } from 'react-admin';
+import { Datagrid, EmailField, List, TextField, BooleanField, EditButton } from 'react-admin';
 
 //Teachers: id, firstname.lastname, initials, phone,email,color,hide,password,roles
 // ?? Need filter for List to be able to serach teachers later on ?? (Different feature)

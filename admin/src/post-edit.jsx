@@ -12,3 +12,21 @@ export const PostEdit = () => (
     </SimpleForm>
   </Edit>
 );
+
+export const TeacherEdit = () => (
+  <Edit title="Edit teachers">
+    <SimpleForm>
+      <TextInput disabled source="id" />
+      <TextInput source="firstname" />
+      <TextInput source="lastname" />
+      <TextInput source="initials" />
+      <TextInput source="phone" />
+      <TextInput label="Email Address" source="email" type="email" />
+      <BooleanInput label="hide" source="hide" />
+      <PasswordInput source="password" />
+      <TextInput source="roles" />
+      <EditButton />
+
+    </SimpleForm>
+  </Edit>
+);
