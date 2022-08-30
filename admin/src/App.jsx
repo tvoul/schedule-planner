@@ -17,7 +17,10 @@ const App = () => (
   <Admin dashboard={Dashboard} dataProvider={dataProvider}>
     <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
     <Resource name="users" list={UserList} icon={UserIcon} />
-  </Admin>
+    
+  </Admin>  
 );
+// edit={PostTeachers} create={TeacherCreate} need to be added in follwoing sprint 
+//<Resource name="teachers" list={TeacherList} icon={TeacherIcon} />  
 
 export default App;
