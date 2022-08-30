@@ -27,3 +27,13 @@ export const TeacherCreate = props => (
     </SimpleForm>
   </Create>
 )
+
+export const SchoolCreate = props => (
+  <Create {...props}>
+    <SimpleForm>
+      <TextInput disabled source="id" />
+      <TextInput source="name" />
+      <TextInput source="shortname" />
+    </SimpleForm>
+  </Create>
+);
