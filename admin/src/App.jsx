@@ -9,15 +9,15 @@ import jsonServerProvider from 'ra-data-json-server';
 import PostIcon from '@mui/icons-material/Book';
 import UserIcon from '@mui/icons-material/Group';
 import Dashboard from "./Dashboard";
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
-
+const dataProvider = jsonServerProvider('/data');
+const d = jsonServerProvider('/data')
 // <Resource name="users" list={ListGuesser} />
 
 const App = () => (
   <Admin dashboard={Dashboard} dataProvider={dataProvider}>
     <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
-    <Resource name="users" list={UserList} icon={UserIcon} />
+    <Resource name="teachers" list={UserList} icon={UserIcon} />
   </Admin>
 );
-
+console.log(d)
 export default App;

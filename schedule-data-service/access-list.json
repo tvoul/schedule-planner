@@ -52,7 +52,7 @@
   {
     "route": "/data/teachers",
     "roles":[
-      {"role": "user", "methods": ["GET","PUT"]},
+      {"role": "*", "methods": ["GET","PUT"]},
       {"role": "admin", "methods": ["GET","PUT","POST","DELETE"]}
     ]
   },
