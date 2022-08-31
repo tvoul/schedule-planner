@@ -1,7 +1,7 @@
 import { Create, ReferenceInput, SelectInput, SimpleForm, TextInput,BooleanInput,PasswordInput } from 'react-admin';
 
 
-/* export const PostCreate = props => (
+export const PostCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <ReferenceInput source="userId" reference="users">
@@ -12,7 +12,7 @@ import { Create, ReferenceInput, SelectInput, SimpleForm, TextInput,BooleanInput
     </SimpleForm>
   </Create>
 );
- */
+ 
 
 export const TeacherCreate = props => (
   <Create {...props}>

@@ -40,7 +40,7 @@ export const SchoolEdit = () => (
   
 );
 
-export const InvoiceInput = () => (
+export const InvoiceEdit = () => (
   <Edit title="Edit Invoice">
     <SimpleForm>
       <TextInput disabled source="id" />

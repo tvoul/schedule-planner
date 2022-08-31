@@ -27,8 +27,7 @@ const App = () => (
     
   </Admin>  
 );
-// edit={PostTeachers} create={TeacherCreate} need to be added in follwoing sprint 
-//<Resource name="teachers" list={TeacherList} icon={TeacherIcon} />  
+
 
 
 export default App;
