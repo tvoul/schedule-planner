@@ -15,7 +15,6 @@ import SchoolIcon from '@mui/icons-material/School';
 import Dashboard from "./Dashboard";
 const dataProvider = jsonServerProvider('/data');
 
-
 const App = () => (
   <Admin dashboard={Dashboard} dataProvider={dataProvider}>
     <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
@@ -27,5 +26,6 @@ const App = () => (
 );
 // edit={PostTeachers} create={TeacherCreate} need to be added in follwoing sprint 
 //<Resource name="teachers" list={TeacherList} icon={TeacherIcon} />  
+
 
 export default App;
