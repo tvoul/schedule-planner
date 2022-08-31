@@ -10,7 +10,6 @@ import PostIcon from '@mui/icons-material/Book';
 import UserIcon from '@mui/icons-material/Group';
 import Dashboard from "./Dashboard";
 const dataProvider = jsonServerProvider('/data');
-const d = jsonServerProvider('/data')
 // <Resource name="users" list={ListGuesser} />
 
 const App = () => (
@@ -19,5 +18,4 @@ const App = () => (
     <Resource name="teachers" list={UserList} icon={UserIcon} />
   </Admin>
 );
-console.log(d)
 export default App;
