@@ -13,9 +13,8 @@ import UserIcon from '@mui/icons-material/Group';
 import TeacherIcon from '@mui/icons-material/Person';
 import SchoolIcon from '@mui/icons-material/School';
 import Dashboard from "./Dashboard";
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
-//const dataProvider = simpleRestProvider('https://localhost:7666/data/');
-// <Resource name="users" list={ListGuesser} />
+const dataProvider = jsonServerProvider('/data');
+
 
 const App = () => (
   <Admin dashboard={Dashboard} dataProvider={dataProvider}>
