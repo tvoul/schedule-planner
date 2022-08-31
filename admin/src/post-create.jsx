@@ -1,6 +1,7 @@
-import { Create, ReferenceInput, SelectInput, SimpleForm, TextInput } from 'react-admin';
+import { Create, ReferenceInput, SelectInput, SimpleForm, TextInput,BooleanInput,PasswordInput } from 'react-admin';
 
-export const PostCreate = props => (
+
+/* export const PostCreate = props => (
   <Create {...props}>
     <SimpleForm>
       <ReferenceInput source="userId" reference="users">
@@ -11,6 +12,7 @@ export const PostCreate = props => (
     </SimpleForm>
   </Create>
 );
+ */
 
 export const TeacherCreate = props => (
   <Create {...props}>
@@ -37,3 +39,18 @@ export const SchoolCreate = props => (
     </SimpleForm>
   </Create>
 );
+
+export const InvoiceCreate = props => (
+  <Create {...props}>
+    <SimpleForm>
+      <TextInput disabled source="id" />
+      <TextInput source="school" />
+      <TextInput source="customHeadline" />
+      <TextInput source="yourReference" />
+      <TextInput source="ourReference" />
+      <TextInput source="invoiceDate" />
+      <TextInput source="dueDate" />
+      <TextInput source="invoiceItems" />
+    </SimpleForm>
+  </Create>
+)

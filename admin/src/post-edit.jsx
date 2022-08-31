@@ -1,4 +1,4 @@
-import { Edit, ReferenceInput, SelectInput, SimpleForm, TextInput } from 'react-admin';
+import { Edit, ReferenceInput, SelectInput, SimpleForm, TextInput,BooleanInput,PasswordInput } from 'react-admin';
 
 export const PostEdit = () => (
   <Edit title="Edit post">
@@ -39,3 +39,18 @@ export const SchoolEdit = () => (
   </Edit>
   
 );
+
+export const InvoiceInput = () => (
+  <Edit title="Edit Invoice">
+    <SimpleForm>
+      <TextInput disabled source="id" />
+      <TextInput source="school" />
+      <TextInput source="customHeadline" />
+      <TextInput source="yourReference" />
+      <TextInput source="ourReference" />
+      <TextInput source="invoiceDate" />
+      <TextInput source="dueDate" />
+      <TextInput source="invoiceItems" />
+    </SimpleForm>
+  </Edit>
+)
