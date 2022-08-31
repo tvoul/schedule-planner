@@ -7,7 +7,7 @@ export const SchoolList = () => (
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />
-            <TextField source="shortname" />
+            <TextField source="shortName" />
             <EditButton />
         </Datagrid>
     </List>
