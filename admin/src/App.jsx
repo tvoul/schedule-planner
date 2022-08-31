@@ -4,8 +4,9 @@ import { Admin, Resource, EditGuesser } from 'react-admin';
 import { PostList } from './posts';
 import { TeacherList } from "./teachers";
 import { SchoolList } from "./schools";
-import { PostEdit, TeacherEdit, SchoolEdit } from "./post-edit";
-import { PostCreate, TeacherCreate, SchoolCreate} from "./post-create";
+import { CourseList } from "./courses";
+import { PostEdit, TeacherEdit, SchoolEdit, CourseEdit } from "./post-edit";
+import { PostCreate, TeacherCreate, SchoolCreate, CourseCreate } from "./post-create";
 import { UserList } from './users';
 import jsonServerProvider from 'ra-data-json-server';
 import PostIcon from '@mui/icons-material/Book';
@@ -21,8 +22,8 @@ const App = () => (
     <Resource name="users" list={UserList} icon={UserIcon} />
     <Resource name="teachers" list={TeacherList} icon={TeacherIcon} edit={TeacherEdit} create={TeacherCreate} />
     <Resource name="schools" list={SchoolList} icon={SchoolIcon} edit={SchoolEdit} create={SchoolCreate} />
-    
-  </Admin>  
+    <Resource name="courses" list={CourseList} icon={UserIcon} edit={CourseEdit} create={CourseCreate} />
+  </Admin>
 );
 // edit={PostTeachers} create={TeacherCreate} need to be added in follwoing sprint 
 //<Resource name="teachers" list={TeacherList} icon={TeacherIcon} />  
