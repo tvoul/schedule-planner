@@ -11,3 +11,29 @@ export const PostCreate = props => (
     </SimpleForm>
   </Create>
 );
+
+export const TeacherCreate = props => (
+  <Create {...props}>
+    <SimpleForm>
+      <TextInput disabled source="id" />
+      <TextInput source="firstname" />
+      <TextInput source="lastname" />
+      <TextInput source="initials" />
+      <TextInput source="phone" />
+      <TextInput label="Email Address" source="email" type="email" />
+      <BooleanInput label="hide" source="hide" />
+      <PasswordInput source="password" />
+      <TextInput source="roles" />
+    </SimpleForm>
+  </Create>
+)
+
+export const SchoolCreate = props => (
+  <Create {...props}>
+    <SimpleForm>
+      <TextInput disabled source="id" />
+      <TextInput source="name" />
+      <TextInput source="shortname" />
+    </SimpleForm>
+  </Create>
+);
