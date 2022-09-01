@@ -36,6 +36,17 @@ module.exports = function(server, db){
     response.json(result)
   })
 
+  //NEW FEATURE: delete teacher 
+  server.delete('/data/teachers', (request, response) => {
+    let user = request.body
+    let result
+    try {
+      result = db.prepare('DELETE FROM teacher WHERE id = ?')
+    } catch (e) {
+      response.json(result)
+    }
+  })
+
 
   // begär ändring av lösenord för användare
   server.delete('/data/teachers/password', (request, response) => {
