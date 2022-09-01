@@ -37,5 +37,23 @@ export const SchoolEdit = () => (
       <TextInput source="shortname" />
     </SimpleForm>
   </Edit>
-  
+
+);
+
+export const CourseEdit = () => (
+  <Edit title="Edit teachers">
+    <SimpleForm>
+      <TextField source="id" />
+      <TextField source="name" />
+      <TextField source="shortname" />
+      <TextField source="class" />
+      <TextField source="points" />
+      <TextField source="startDate" />
+      <TextField source="endDate" />
+      <TextField source="plan" />
+      <TextField source="invoiceItem" />
+      <TextField source="hoursPerDay" />
+      <BooleanField source="hide" />
+    </SimpleForm>
+  </Edit>
 );

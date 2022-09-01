@@ -37,3 +37,21 @@ export const SchoolCreate = props => (
     </SimpleForm>
   </Create>
 );
+
+export const CourseCreate = props => (
+  <Create {...props}>
+    <SimpleForm>
+      <TextField source="id" />
+      <TextField source="name" />
+      <TextField source="shortname" />
+      <TextField source="class" />
+      <TextField source="points" />
+      <TextField source="startDate" />
+      <TextField source="endDate" />
+      <TextField source="plan" />
+      <TextField source="invoiceItem" />
+      <TextField source="hoursPerDay" />
+      <BooleanField source="hide" />
+    </SimpleForm>
+  </Create>
+);
