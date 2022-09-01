@@ -14,14 +14,3 @@ export const PostEdit = () => (
 );
 
 
-export const SchoolEdit = () => (
-  <Edit title="Edit schools">
-    <SimpleForm>
-      <TextInput disabled source="id" />
-      <TextInput source="name" />
-      <TextInput source="shortname" />
-    </SimpleForm>
-  </Edit>
-  
-);
-

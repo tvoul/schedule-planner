@@ -12,3 +12,25 @@ export const SchoolList = () => (
         </Datagrid>
     </List>
 );
+
+export const SchoolEdit = () => (
+    <Edit title="Edit schools">
+        <SimpleForm>
+            <TextInput disabled source="id" />
+            <TextInput source="name" />
+            <TextInput source="shortname" />
+        </SimpleForm>
+    </Edit>
+
+);
+
+export const SchoolCreate = props => (
+    <Create {...props}>
+        <SimpleForm>
+            <TextInput disabled source="id" />
+            <TextInput source="name" />
+            <TextInput source="shortname" />
+        </SimpleForm>
+    </Create>
+);
+
