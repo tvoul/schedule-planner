@@ -41,7 +41,7 @@ export const SchoolEdit = () => (
 );
 
 export const CourseEdit = () => (
-  <Edit title="Edit teachers">
+  <Edit title="Edit courses">
     <SimpleForm>
       <TextField source="id" />
       <TextField source="name" />
