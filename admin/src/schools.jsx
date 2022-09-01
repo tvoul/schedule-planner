@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField,EditButton} from 'react-admin';
+import { Datagrid, List, TextField, Edit, EditButton, SimpleForm, Create, TextInput} from 'react-admin';
 
 
 // ?? Need filter for List to be able to serach teachers later on ?? (Different feature)
