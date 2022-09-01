@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField, EditButton, Edit, SimpleForm, TextInput, Create, SimpleForm,  } from 'react-admin';
+import { Datagrid, List, TextField, EditButton, Edit, SimpleForm, TextInput, Create  } from 'react-admin';
 
 export const InvoiceItemList = () => (
     <List>

@@ -21,38 +21,39 @@ export const ClassList = () => (
 
 );
 
-// TextInput/ BooleanInput instead of TextInput/ BooleanInput?? 
+// !Edited @R: TextFiled -> TextInput intstead 
 export const ClassEdit = () => (
     <Edit title="Edit classes">
         <SimpleForm>
-            <TextField source="id" />
-            <TextField source="name" />
-            <TextField source="shortName" />
-            <TextField source="school" />
-            <TextField source="blog" />
-            <BooleanField source="hide" />
-            <TextField source="defaultStartTime" />
-            <TextField source="defaultEndTime" />
-            <TextField source="defaultInvoiceItem" />
-            <TextField source="defaultHourPerDay" />
+            <TextInput source="id" />
+            <TextInput source="name" />
+            <TextInput source="shortName" />
+            <TextInput source="school" />
+            <TextInput source="blog" />
+            <BooleanInput source="hide" />
+            <TextInput source="defaultStartTime" />
+            <TextInput source="defaultEndTime" />
+            <TextInput source="defaultInvoiceItem" />
+            <TextInput source="defaultHourPerDay" />
             <EditButton />
         </SimpleForm>
     </Edit>
 
 );
-
-// TextInput/ BooleanInput instead of TextInput/ BooleanInput?? 
+// !Edited @R: TextFiled -> TextInput intstead 
 export const ClassCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextField source="shortName" />
-            <TextField source="school" />
-            <TextField source="blog" />
-            <BooleanField source="hide" />
-            <TextField source="defaultStartTime" />
-            <TextField source="defaultEndTime" />
-            <TextField source="defaultInvoiceItem" />
-            <TextField source="defaultHourPerDay" />
+            <TextInput source="id" />
+            <TextInput source="name" />
+            <TextInput source="shortName" />
+            <TextInput source="school" />
+            <TextInput source="blog" />
+            <BooleanInput source="hide" />
+            <TextInput source="defaultStartTime" />
+            <TextInput source="defaultEndTime" />
+            <TextInput source="defaultInvoiceItem" />
+            <TextInput source="defaultHourPerDay" />
             <EditButton />
         </SimpleForm>
     </Create>
