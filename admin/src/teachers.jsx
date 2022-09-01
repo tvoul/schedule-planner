@@ -51,4 +51,4 @@ export const TeacherCreate = props => (
             <TextInput source="roles" />
         </SimpleForm>
     </Create>
-)
+);

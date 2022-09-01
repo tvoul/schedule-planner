@@ -15,7 +15,7 @@ const App = () => (
   <Admin dashboard={Dashboard} dataProvider={dataProvider}>
     <Resource name="teachers" list={TeacherList} icon={TeacherIcon} edit={TeacherEdit} create={TeacherCreate} />
     <Resource name="schools" list={SchoolList} icon={SchoolIcon} edit={SchoolEdit} create={SchoolCreate} />
-    <Resource name="invoiceItems" list={InvoiceItemList} icon={InvoiceItemIcon} edit={InvoiceItemEdit} create={InvoiceItemCreate} />
+    <Resource name="invoice_items" list={InvoiceItemList} icon={InvoiceItemIcon} edit={InvoiceItemEdit} create={InvoiceItemCreate} />
     
   </Admin>  
 );
