@@ -40,17 +40,3 @@ export const SchoolCreate = props => (
   </Create>
 );
 
-export const InvoiceCreate = props => (
-  <Create {...props}>
-    <SimpleForm>
-      <TextInput disabled source="id" />
-      <TextInput source="school" />
-      <TextInput source="customHeadline" />
-      <TextInput source="yourReference" />
-      <TextInput source="ourReference" />
-      <TextInput source="invoiceDate" />
-      <TextInput source="dueDate" />
-      <TextInput source="invoiceItems" />
-    </SimpleForm>
-  </Create>
-)

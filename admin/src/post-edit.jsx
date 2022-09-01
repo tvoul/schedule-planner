@@ -40,17 +40,3 @@ export const SchoolEdit = () => (
   
 );
 
-export const InvoiceEdit = () => (
-  <Edit title="Edit Invoice">
-    <SimpleForm>
-      <TextInput disabled source="id" />
-      <TextInput source="school" />
-      <TextInput source="customHeadline" />
-      <TextInput source="yourReference" />
-      <TextInput source="ourReference" />
-      <TextInput source="invoiceDate" />
-      <TextInput source="dueDate" />
-      <TextInput source="invoiceItems" />
-    </SimpleForm>
-  </Edit>
-)
