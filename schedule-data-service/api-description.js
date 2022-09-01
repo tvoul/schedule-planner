@@ -74,6 +74,16 @@ module.exports = function(host){
             },
             description:"Generate and get invoices",
             link: host  + "/data/invoices"
+        },
+        {
+        
+            route: "/data/invoice_items",
+            methods: ["POST", "GET", "PUT","DELETE"],
+            description: "Get list of invoice items",
+            link: host + "/data/invoice_items"
+                
+    
         }
+
     ]
 }

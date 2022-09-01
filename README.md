@@ -4,6 +4,7 @@ Hi! The development team for this project consists of:
 - Maria (MariaFranz)
 - Jesper (Jsvensson)
 - Tomas (tvoul)
+- Rie (r-clementz)
 
 We will be supporting you through out this project. We communicate on Discord, plan on Miro and keep track of the project through Trello.
 # How to get started

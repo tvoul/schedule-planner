@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField,EditButton} from 'react-admin';
+import { Datagrid, List, TextField, Edit, EditButton, SimpleForm, Create, TextInput} from 'react-admin';
 
 
 // ?? Need filter for List to be able to serach teachers later on ?? (Different feature)
@@ -12,3 +12,26 @@ export const SchoolList = () => (
         </Datagrid>
     </List>
 );
+//Edit button needs to be functional 
+//To be able to Edit and School be able to change access list 
+export const SchoolEdit = () => (
+    <Edit title="Edit schools">
+        <SimpleForm>
+            <TextInput disabled source="id" />
+            <TextInput source="name" />
+            <TextInput source="shortname" />
+        </SimpleForm>
+    </Edit>
+
+);
+
+export const SchoolCreate = props => (
+    <Create {...props}>
+        <SimpleForm>
+            <TextInput disabled source="id" />
+            <TextInput source="name" />
+            <TextInput source="shortname" />
+        </SimpleForm>
+    </Create>
+);
+
