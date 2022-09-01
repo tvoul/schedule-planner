@@ -13,6 +13,7 @@ import PostIcon from '@mui/icons-material/Book';
 import UserIcon from '@mui/icons-material/Group';
 import TeacherIcon from '@mui/icons-material/Person';
 import SchoolIcon from '@mui/icons-material/School';
+import CourseIcon from '@mui/icons-material/AutoStories';
 import Dashboard from "./Dashboard";
 const dataProvider = jsonServerProvider('/data');
 
@@ -22,7 +23,7 @@ const App = () => (
     <Resource name="users" list={UserList} icon={UserIcon} />
     <Resource name="teachers" list={TeacherList} icon={TeacherIcon} edit={TeacherEdit} create={TeacherCreate} />
     <Resource name="schools" list={SchoolList} icon={SchoolIcon} edit={SchoolEdit} create={SchoolCreate} />
-    <Resource name="courses" list={CourseList} icon={UserIcon} edit={CourseEdit} create={CourseCreate} />
+    <Resource name="courses" list={CourseList} icon={CourseIcon} edit={CourseEdit} create={CourseCreate} />
   </Admin>
 );
 // edit={PostTeachers} create={TeacherCreate} need to be added in follwoing sprint 
