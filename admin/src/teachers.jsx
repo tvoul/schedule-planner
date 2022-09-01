@@ -1,6 +1,5 @@
 import { Datagrid, EmailField, List, TextField, BooleanField, EditButton } from 'react-admin';
 
-//Teachers: id, firstname.lastname, initials, phone,email,color,hide,password,roles
 // ?? Need filter for List to be able to serach teachers later on ?? (Different feature)
 export const TeacherList = () => (
     <List>
@@ -19,3 +18,37 @@ export const TeacherList = () => (
         </Datagrid>
     </List>
 );
+
+
+export const TeacherEdit = () => (
+    <Edit title="Edit teachers">
+        <SimpleForm>
+            <TextInput disabled source="id" />
+            <TextInput source="firstname" />
+            <TextInput source="lastname" />
+            <TextInput source="initials" />
+            <TextInput source="phone" />
+            <TextInput label="Email Address" source="email" type="email" />
+            <BooleanInput label="hide" source="hide" />
+            <PasswordInput source="password" />
+            <TextInput source="roles" />
+        </SimpleForm>
+    </Edit>
+);
+
+
+export const TeacherCreate = props => (
+    <Create {...props}>
+        <SimpleForm>
+            <TextInput disabled source="id" />
+            <TextInput source="firstname" />
+            <TextInput source="lastname" />
+            <TextInput source="initials" />
+            <TextInput source="phone" />
+            <TextInput label="Email Address" source="email" type="email" />
+            <BooleanInput label="hide" source="hide" />
+            <PasswordInput source="password" />
+            <TextInput source="roles" />
+        </SimpleForm>
+    </Create>
+)
