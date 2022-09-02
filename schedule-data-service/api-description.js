@@ -17,15 +17,17 @@ module.exports = function(host){
             description:"Populate database with holidays between :from and :to. (Warning, destructive, clears all previously loaded holidays from database)",
             link: host  + "/data/populate-swedish-holidays/2020-01-01/2028–12-31"
         },
+        
         {
             route:"/data/login",
             methods: ["POST","GET","DELETE"],
             description:"Login user, get current logged in user, logout"
         },
+        //Teacher 
         {
             route:"/data/teachers",
-            methods: ["GET","POST","PUT"],
-            description:"Get list of teachers, create teacher, add/change teacher details",
+            methods: ["GET","POST","PUT","DELETE"], // Added DELETE - should be able to delete teacher now 
+            description:"Get list of teachers, create teacher, add/change, delete teacher details",
             link: host  + "/data/teachers"
         },
         {
@@ -34,10 +36,11 @@ module.exports = function(host){
             description:"Clear old password, add new password",
             link: host  + "/data/teachers/password"
         },
+        //Classes 
         {
             route:"/data/classes",
-            methods: ["GET"],
-            description:"Get list of classes",
+            methods: ["GET", "POST", "PUT", "DELETE"], //Added POST, PUT, DELETE
+            description: "Get list of classes, create classe, add/change, delete class details",
             link: host  + "/data/classes"
         },
         {
