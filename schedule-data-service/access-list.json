@@ -31,7 +31,8 @@
   {
     "route": "/data/classes",
     "roles":[
-      {"role": "user", "methods": ["GET"]}
+      {"role": "user", "methods": ["GET", "DELETE"]},
+      {"role": "admin", "methods":["DELETE"]}
     ]
   },
 

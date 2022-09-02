@@ -1,4 +1,4 @@
-import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm } from 'react-admin';
+import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, DeleteButton } from 'react-admin';
 
 
 export const ClassList = () => (
@@ -14,6 +14,7 @@ export const ClassList = () => (
             <TextField source="defaultEndTime" />
             <TextField source="defaultInvoiceItem" />
             <TextField source="defaultHourPerDay" />
+            <DeleteButton basepath='/classes' />
             <EditButton />
 
         </Datagrid>

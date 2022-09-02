@@ -1,6 +1,6 @@
 // in src/App.js
 import * as React from "react";
-import { Admin, Resource, EditGuesser } from 'react-admin';
+import { Admin, Resource, EditGuesser, DeleteButton } from 'react-admin';
 import { TeacherList, TeacherEdit, TeacherCreate } from "./teachers";
 import { SchoolList, SchoolEdit, SchoolCreate } from "./schools";
 import { InvoiceItemList, InvoiceItemEdit,InvoiceItemCreate } from "./ivoice-item";
