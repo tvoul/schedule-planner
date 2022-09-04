@@ -126,3 +126,23 @@ server.get('/data/:table/:id', (req, res)=>{ // but limit which tables to query 
   setResultHeaders(res, result[0])
   res.json(result[0])
 })
+
+server.delete('/data/:table/:id', (request, response) =>{ // but limit which tables to query with ACL
+  let query = "DELETE FROM " + request.params.table + " WHERE id = @id"
+  let result;
+  result = db.prepare(query).run({id: request.params.id})
+  response.json(result)
+})
+
+server.patch('/data/:table/:id', (request, response) =>{ // but limit which tables to query with ACL
+let query = "UPDATE " + request.params.table + " SET "
+for(const [key, value] of Object.entries(request.body))
+{
+  query += (`${key} = '${value}', `);
+}
+query = query.replace(/,\s*$/, "")
+query += ' WHERE id = @id'
+let result;
+result = db.prepare(query).run({id: request.params.id})
+response.json(result)
+})
