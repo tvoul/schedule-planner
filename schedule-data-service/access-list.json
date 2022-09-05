@@ -51,12 +51,7 @@
         "methods": [
           "GET"
         ]
-      }
-    ]
-  },
-  {
-    "route": "/data/classes",
-    "roles": [
+      },
       {
         "role": "admin",
         "methods": [
@@ -80,19 +75,14 @@
     ]
   },
   {
-    "route": "/data/courses*",
+    "route": "/data/courses",
     "roles": [
       {
         "role": "user",
         "methods": [
           "GET"
         ]
-      }
-    ]
-  },
-  {
-    "route": "/data/courses",
-    "roles": [
+      },
       {
         "role": "admin",
         "methods": [
