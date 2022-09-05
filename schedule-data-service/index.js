@@ -134,7 +134,7 @@ server.delete('/data/:table/:id', (request, response) =>{ // but limit which tab
   response.json(result)
 })
 
-server.patch('/data/:table/:id', (request, response) =>{ // but limit which tables to query with ACL
+server.put('/data/:table/:id', (request, response) =>{ // but limit which tables to query with ACL
 let query = "UPDATE " + request.params.table + " SET "
 for(const [key, value] of Object.entries(request.body))
 {
