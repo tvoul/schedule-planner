@@ -35,7 +35,7 @@ export const InvoiceItemEdit = () => (
 export const InvoiceItemCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="title" />
             <TextInput source="unit" />
             <TextInput source="netPrice" validate={netPriceValidator} defaultValue={0} />
