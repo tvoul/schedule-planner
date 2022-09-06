@@ -23,7 +23,7 @@ export const CourseList = () => (
 export const CourseEdit = () => (
     <Edit title="Edit courses">
         <SimpleForm>
-            <TextInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" />
             <TextInput source="shortname" />
             <TextInput source="class" />
@@ -41,11 +41,11 @@ export const CourseEdit = () => (
 export const CourseCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" />
-            <TextInput  source="shortname" />
-            <TextInput  source="class" />
-            <TextInput  source="points" />
+            <TextInput source="shortname" />
+            <TextInput source="class" />
+            <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />

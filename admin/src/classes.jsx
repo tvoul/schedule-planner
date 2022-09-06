@@ -25,7 +25,7 @@ export const ClassList = () => (
 export const ClassEdit = () => (
     <Edit title="Edit classes">
         <SimpleForm>
-            <TextInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" />
             <TextInput source="shortName" />
             <TextInput source="school" />
@@ -44,7 +44,7 @@ export const ClassEdit = () => (
 export const ClassCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="id" />
+            <TextInput disabled source="id" />
             <TextInput source="name" />
             <TextInput source="shortName" />
             <TextInput source="school" />
