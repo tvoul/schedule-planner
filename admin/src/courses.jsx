@@ -33,7 +33,6 @@ const hideValidator = [required(), validateInput]
 export const CourseEdit = () => (
     <Edit title="Edit courses">
         <SimpleForm>
-            <TextInput disabled source="id" />
             <TextInput source="name" />
             <TextInput source="shortName" />
             <TextInput source="class" />
@@ -50,8 +49,7 @@ export const CourseEdit = () => (
 
 export const CourseCreate = props => (
     <Create {...props}>
-        <SimpleForm>
-            <TextInput disabled source="id" />
+        <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
             <TextInput source="class" />

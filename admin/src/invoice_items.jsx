@@ -24,7 +24,6 @@ const netPriceValidator = [required(), validateInput]
 export const InvoiceItemEdit = () => (
     <Edit title="Edit invoice_items">
         <SimpleForm>
-            <TextInput disabled source="id" />
             <TextInput source="title" />
             <TextInput source="unit" />
             <TextInput source="netPrice" validate={netPriceValidator} defaultValue={0}/>
@@ -35,7 +34,6 @@ export const InvoiceItemEdit = () => (
 export const InvoiceItemCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput disabled source="id" />
             <TextInput source="title" />
             <TextInput source="unit" />
             <TextInput source="netPrice" validate={netPriceValidator} defaultValue={0} />

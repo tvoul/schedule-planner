@@ -32,8 +32,7 @@ const validator = [required(), validateInput]
 // !Edited @R: TextFiled -> TextInput intstead 
 export const ClassEdit = () => (
     <Edit title="Edit classes">
-        <SimpleForm>
-            <TextInput disabled source="id" />
+        <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
             <TextInput source="school" />
@@ -42,7 +41,7 @@ export const ClassEdit = () => (
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
             <TextInput source="defaultInvoiceItem" />
-            <TextInput source="defaultHourPerDay" validate={validator} defaultValue={0} />
+            <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
         </SimpleForm>
     </Edit>
@@ -51,8 +50,7 @@ export const ClassEdit = () => (
 // !Edited @R: TextFiled -> TextInput intstead 
 export const ClassCreate = props => (
     <Create {...props}>
-        <SimpleForm>
-            <TextInput disabled source="id" />
+        <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
             <TextInput source="school" />
@@ -61,7 +59,7 @@ export const ClassCreate = props => (
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
             <TextInput source="defaultInvoiceItem" />
-            <TextInput source="defaultHourPerDay" validate={validator} defaultValue={0} />
+            <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
         </SimpleForm>
     </Create>
