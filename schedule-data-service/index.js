@@ -130,7 +130,12 @@ server.get('/data/:table/:id', (req, res)=>{ // but limit which tables to query 
 server.delete('/data/:table/:id', (request, response) =>{ // but limit which tables to query with ACL
   let query = "DELETE FROM " + request.params.table + " WHERE id = @id"
   let result;
-  result = db.prepare(query).run({id: request.params.id})
+  try{
+    result = db.prepare(query).run({id: request.params.id})
+  }
+  catch(error){
+    console.log(error)
+  }
   response.json(result)
 })
 
@@ -143,7 +148,12 @@ for(const [key, value] of Object.entries(request.body))
 query = query.replace(/,\s*$/, "")
 query += ' WHERE id = @id'
 let result;
-result = db.prepare(query).run({id: request.params.id})
+try{
+  result = db.prepare(query).run({id: request.params.id})
+}
+catch(error){
+  console.log(error)
+}
 response.json(result)
 })
 
@@ -162,7 +172,11 @@ server.post('/data/:table', (request, response) =>{ // but limit which tables to
   query = query.replace(/,\s*$/, "")
   query += ');'
   let result
-  result = db.prepare(query).run({id: request.params.id})
+  try{
+    result = db.prepare(query).run
+  }
+  catch(error){
+    console.log(error)
+  }
   response.json(result)
   })
-
