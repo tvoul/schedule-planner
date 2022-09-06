@@ -37,6 +37,15 @@
     ]
   },
 
+
+  {
+    "route": "/data/classes*",
+    "roles":[
+      {"role": "user", "methods": ["GET"]},
+      {"role": "admin", "methods": ["GET","PUT","POST","DELETE"]}
+    ]
+  },
+
   {
     "route": "/data/courses*",
     "roles":[
