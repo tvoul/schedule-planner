@@ -44,7 +44,7 @@
   {
     "route": "/data/teachers",
     "roles": [
-      {"role": "*","methods": ["GET","PUT"]},
+      {"role": "user","methods": ["GET","PUT"]},
       {"role": "admin","methods": ["GET","PUT","POST","DELETE"]}
     ]
   },
