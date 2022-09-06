@@ -20,6 +20,12 @@
       {"role": "admin", "methods": ["GET"]}
     ]
   },
+  {
+    "route": "/data/holidays*",
+    "roles": [
+       {"role": "admin","methods": ["GET", "POST","DELETE"]}
+    ]
+  },
 
   {
     "route": "/data/schools*",
@@ -83,7 +89,7 @@
   },
 
   {
-    "route":"/data/invoice_items",
+    "route":"/data/invoice_items*",
     "roles":[
       {"role":"admin","methods":["GET","POST","PUT","DELETE"]}
     ]
