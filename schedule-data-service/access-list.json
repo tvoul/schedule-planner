@@ -22,16 +22,18 @@
   },
 
   {
-    "route": "/data/schools",
+    "route": "/data/schools*",
     "roles":[
-      {"role": "user", "methods": ["GET"]}
+      {"role": "user", "methods": ["GET"]},
+      {"role": "admin", "methods": ["GET","PUT","POST","DELETE"]}
     ]
   },
 
   {
-    "route": "/data/classes",
+    "route": "/data/classes*",
     "roles":[
-      {"role": "user", "methods": ["GET"]}
+      {"role": "user", "methods": ["GET"]},
+      {"role": "admin", "methods": ["GET","PUT","POST","DELETE"]}
     ]
   },
 
@@ -45,14 +47,15 @@
   {
     "route": "/data/courses*",
     "roles":[
-      {"role": "user", "methods": ["GET"]}
+      {"role": "user", "methods": ["GET"]},
+      {"role": "admin", "methods": ["GET","PUT","POST","DELETE"]}
     ]
   },
 
   {
-    "route": "/data/teachers",
+    "route": "/data/teachers*",
     "roles":[
-      {"role": "*", "methods": ["GET","PUT"]},
+      {"role": "user", "methods": ["GET","PUT"]},
       {"role": "admin", "methods": ["GET","PUT","POST","DELETE"]}
     ]
   },
