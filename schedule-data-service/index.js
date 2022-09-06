@@ -165,7 +165,6 @@ server.post('/data/:table', (request, response) =>{ // but limit which tables to
   query = query.replace(/,\s*$/, "")
   query += ');'
   let result
-  console.log(query)
   result = db.prepare(query).run({id: request.params.id})
   response.json(result)
   })
