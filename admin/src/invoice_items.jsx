@@ -3,7 +3,7 @@ import { Datagrid, List, TextField, EditButton, Edit, SimpleForm, TextInput, Cre
 export const InvoiceItemList = () => (
     <List>
         <Datagrid rowClick="edit">
-            <TextField disabled source="id" />
+            <TextField source="id" />
             <TextField source="title" />
             <TextField source="unit" />
             <TextField source="netPrice" />

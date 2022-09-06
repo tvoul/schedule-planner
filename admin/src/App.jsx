@@ -3,7 +3,7 @@ import * as React from "react";
 import { Admin, Resource, EditGuesser } from 'react-admin';
 import { TeacherList, TeacherEdit, TeacherCreate } from "./teachers";
 import { SchoolList, SchoolEdit, SchoolCreate } from "./schools";
-import { InvoiceItemList, InvoiceItemEdit,InvoiceItemCreate } from "./ivoice_items";
+import { InvoiceItemList, InvoiceItemEdit,InvoiceItemCreate } from "./invoice_items";
 import { CourseList,CourseEdit,CourseCreate } from "./courses";
 import { ClassList,ClassEdit,ClassCreate } from './classes'; 
 import jsonServerProvider from 'ra-data-json-server';
