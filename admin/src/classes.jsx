@@ -31,7 +31,7 @@ export const ClassEdit = () => (
             <TextInput source="shortName" />
             <TextInput source="school" />
             <TextInput source="blog" />
-            <BooleanInput source="hide" />
+            <BooleanInput label="hide" source="hide" />
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
             <TextInput source="defaultInvoiceItem" />

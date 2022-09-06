@@ -76,6 +76,8 @@ server.post('/data/courses', (req, res)=>{
   res.json(result)
 })
 
+
+
 server.get('/data/classes_view/:all?', (req, res)=>{
   let query
   if(req.params.all){
@@ -92,6 +94,15 @@ server.get('/data/classes_view/:all?', (req, res)=>{
       break;
     }
   }
+  setResultHeaders(res, result)
+  res.json(result)
+})
+
+
+server.post('/data/classes', (req, res)=>{
+  let query = "INSERT INTO courses VALUES(@id, @name, @shortName, @school, @blog, @defaultStartTime, @defaultEndTime, @defaultInvoiceItem, @defaultHoursPerDay)"
+  let statement = db.prepare(query)
+  let result = statement.run(req.body)
   setResultHeaders(res, result)
   res.json(result)
 })
