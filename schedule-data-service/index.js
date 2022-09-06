@@ -99,14 +99,6 @@ server.get('/data/classes_view/:all?', (req, res)=>{
 })
 
 
-server.post('/data/classes', (req, res)=>{
-  let query = "INSERT INTO courses VALUES(@id, @name, @shortName, @school, @blog, @defaultStartTime, @defaultEndTime, @defaultInvoiceItem, @defaultHoursPerDay)"
-  let statement = db.prepare(query)
-  let result = statement.run(req.body)
-  setResultHeaders(res, result)
-  res.json(result)
-})
-
 const createInvoice = require('./services/create-invoice.js')
 
 server.post('/data/invoices/', (req, res)=>{
