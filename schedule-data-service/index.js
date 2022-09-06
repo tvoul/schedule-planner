@@ -149,3 +149,24 @@ let result;
 result = db.prepare(query).run({id: request.params.id})
 response.json(result)
 })
+
+server.post('/data/:table', (request, response) =>{ // but limit which tables to query with ACL
+  let query = "INSERT INTO " + request.params.table + " ("
+  for(const [key, value] of Object.entries(request.body))
+  {
+    query += (`${key},`)
+  }
+  query = query.replace(/,\s*$/, "")
+  query += ') VALUES ('
+  for(const [key, value] of Object.entries(request.body))
+  {
+    query += (`'${value}',`)
+  }
+  query = query.replace(/,\s*$/, "")
+  query += ');'
+  let result
+  console.log(query)
+  result = db.prepare(query).run({id: request.params.id})
+  response.json(result)
+  })
+
