@@ -28,13 +28,6 @@
     ]
   },
 
-  {
-    "route": "/data/classes*",
-    "roles":[
-      {"role": "user", "methods": ["GET"]}
-  
-    ]
-  },
 
   {
     "route": "/data/classes_view",
