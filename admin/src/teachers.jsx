@@ -19,14 +19,14 @@ export const TeacherList = () => (
     </List>
 );
 
-const validateTeachersInput = async (values) => {
+const validateInput = async (values) => {
     const errors = {};
     if (!values.hide) {
         errors.hide = "This value is required!";
     }
  }
 
- const hideValidator = [required(), validateTeachersInput]
+ const hideValidator = [required(), validateInput]
 
 export const TeacherEdit = () => (
     <Edit title="Edit teachers">
@@ -60,3 +60,6 @@ export const TeacherCreate = props => (
         </SimpleForm>
     </Create>
 );
+//?? Maybe email need to be validated if it is correct form ?? 
+// const validateEmail = email(); 
+// Add validate={validateEmail} to <TextInput label="Email Addres" ....
