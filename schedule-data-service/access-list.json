@@ -2,160 +2,69 @@
   {
     "route": "/data",
     "roles": [
-      {
-        "role": "*",
-        "methods": [
-          "GET"
-        ]
-      }
-    ]
+      {"role": "*","methods": ["GET"]}]
   },
   {
     "route": "/data/calendar*",
     "roles": [
-      {
-        "role": "user",
-        "methods": [
-          "GET"
-        ]
-      }
-    ]
+      {"role": "user","methods": ["GET"]}]
   },
   {
-    "route": "/data/populate-swedish-holidays*",
+    "route": "/data/holidays*",
     "roles": [
-      {
-        "role": "admin",
-        "methods": [
-          "GET"
-        ]
-      }
-    ]
+      {"role": "user","methods": ["GET"]},
+      {"role": "admin","methods": ["GET","POST","PUT","DELETE"]}]
   },
   {
     "route": "/data/schools",
     "roles": [
-      {
-        "role": "user",
-        "methods": [
-          "GET"
-        ]
-      }
+      {"role": "user","methods": ["GET"]}
     ]
   },
   {
-    "route": "/data/classes",
+    "route": "/data/classes*",
     "roles": [
-      {
-        "role": "user",
-        "methods": [
-          "GET"
-        ]
-      },
-      {
-        "role": "admin",
-        "methods": [
-          "GET",
-          "POST",
-          "PUT",
-          "DELETE"
-        ]
-      }
+      {"role": "user","methods": ["GET"]},
+      {"role": "admin","methods": ["GET","POST","PUT","DELETE"]}
     ]
   },
   {
     "route": "/data/classes_view",
     "roles": [
-      {
-        "role": "user",
-        "methods": [
-          "GET"
-        ]
-      }
+      {"role": "user","methods": ["GET"]}
     ]
   },
   {
-    "route": "/data/courses",
+    "route": "/data/courses*",
     "roles": [
-      {
-        "role": "user",
-        "methods": [
-          "GET"
-        ]
-      },
-      {
-        "role": "admin",
-        "methods": [
-          "GET",
-          "POST",
-          "PUT",
-          "DELETE"
-        ]
-      }
+      {"role": "user","methods": ["GET"]},
+      {"role": "admin","methods": ["GET","POST","PUT","DELETE"]}
     ]
   },
   {
     "route": "/data/teachers",
     "roles": [
-      {
-        "role": "*",
-        "methods": [
-          "GET",
-          "PUT"
-        ]
-      },
-      {
-        "role": "admin",
-        "methods": [
-          "GET",
-          "PUT",
-          "POST",
-          "DELETE"
-        ]
-      }
+      {"role": "*","methods": ["GET","PUT"]},
+      {"role": "admin","methods": ["GET","PUT","POST","DELETE"]}
     ]
   },
   {
     "route": "/data/teachers/password",
     "roles": [
-      {
-        "role": "user",
-        "methods": [
-          "DELETE",
-          "PATCH"
-        ]
-      }
+      {"role": "user","methods": ["DELETE","PATCH"]}
     ]
   },
   {
     "route": "/data/login",
     "roles": [
-      {
-        "role": "anonymous",
-        "methods": [
-          "POST",
-          "GET"
-        ]
-      },
-      {
-        "role": "user",
-        "methods": [
-          "GET",
-          "DELETE"
-        ]
-      }
+      {"role": "anonymous","methods": ["POST","GET"]},
+      {"role": "user","methods": ["GET","DELETE"]}
     ]
   },
   {
     "route": "/data/invoices*",
     "roles": [
-      {
-        "role": "admin",
-        "methods": [
-          "GET",
-          "POST"
-        ]
-      }
+      {"role": "admin","methods": ["GET","POST"]}
     ]
   },
   {
@@ -163,13 +72,7 @@
     "roles": [
       {
         "role": "admin",
-        "methods": [
-          "GET",
-          "POST",
-          "PUT",
-          "DELETE"
-        ]
-      }
+        "methods": ["GET","POST","PUT","DELETE"]}
     ]
   }
 ]
