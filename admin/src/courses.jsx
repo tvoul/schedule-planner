@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm } from 'react-admin';
+import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required} from 'react-admin';
 
 
 export const CourseList = () => (
@@ -6,7 +6,7 @@ export const CourseList = () => (
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />
-            <TextField source="shortname" />
+            <TextField source="shortName" />
             <TextField source="class" />
             <TextField source="points" />
             <TextField source="startDate" />
@@ -19,13 +19,23 @@ export const CourseList = () => (
         </Datagrid>
     </List>
 );
+
+const validateInput = async (values) => {
+    const errors = {};
+    if (!values.hide) {
+        errors.hide = "This value is required!";
+    }
+}
+
+const hideValidator = [required(), validateInput]
+
 // !Edited @R: TextFiled -> TextInput intstead 
 export const CourseEdit = () => (
     <Edit title="Edit courses">
         <SimpleForm>
             <TextInput disabled source="id" />
             <TextInput source="name" />
-            <TextInput source="shortname" />
+            <TextInput source="shortName" />
             <TextInput source="class" />
             <TextInput source="points" />
             <TextInput source="startDate" />
@@ -33,7 +43,7 @@ export const CourseEdit = () => (
             <TextInput source="plan" />
             <TextInput source="invoiceItem" />
             <TextInput source="hoursPerDay" />
-            <BooleanInput source="hide" />
+            <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>
     </Edit>
 );
@@ -43,7 +53,7 @@ export const CourseCreate = props => (
         <SimpleForm>
             <TextInput disabled source="id" />
             <TextInput source="name" />
-            <TextInput source="shortname" />
+            <TextInput source="shortName" />
             <TextInput source="class" />
             <TextInput source="points" />
             <TextInput source="startDate" />
@@ -51,7 +61,7 @@ export const CourseCreate = props => (
             <TextInput source="plan" />
             <TextInput source="invoiceItem" />
             <TextInput source="hoursPerDay" />
-            <BooleanInput source="hide" />
+            <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>
     </Create>
 );

@@ -54,7 +54,7 @@ export const TeacherCreate = props => (
             <TextInput source="initials" />
             <TextInput source="phone" />
             <TextInput label="Email Address" source="email" type="email" />
-            <BooleanInput label="hide" source="hide" validatte={hideValidator} defaultValue={0}/>
+            <BooleanInput label="hide" source="hide" validate={hideValidator} defaultValue={0} />
             <PasswordInput source="password" />
             <TextInput source="roles" />
         </SimpleForm>

@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField, EditButton, Edit, SimpleForm, TextInput, Create  } from 'react-admin';
+import { Datagrid, List, TextField, EditButton, Edit, SimpleForm, TextInput, Create, required  } from 'react-admin';
 
 export const InvoiceItemList = () => (
     <List>
@@ -21,7 +21,7 @@ const validateInput = async (values) => {
 
 const netPriceValidator = [required(), validateInput]
 
-export const InvoiceItemEdit = props => (
+export const InvoiceItemEdit = () => (
     <Edit title="Edit invoice_items">
         <SimpleForm>
             <TextInput disabled source="id" />
@@ -32,7 +32,7 @@ export const InvoiceItemEdit = props => (
     </Edit>
 );
 
-export const InvoiceItemCreate = () => (
+export const InvoiceItemCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="id" />
