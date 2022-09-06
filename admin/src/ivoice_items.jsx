@@ -12,13 +12,22 @@ export const InvoiceItemList = () => (
     </List>
 );
 
+const validateInvoiceItemsInput = async (values) => {
+    const errors = {};
+    if (!values.hide) {
+        errors.hide = "This value is required!";
+    }
+}
+
+const netPriceValidator = [required(), validateInvoiceItemsInput]
+
 export const InvoiceItemEdit = props => (
     <Edit title="Edit invoice_items">
         <SimpleForm>
             <TextInput disabled source="id" />
             <TextInput source="title" />
             <TextInput source="unit" />
-            <TextInput source="netPrice" />
+            <TextInput source="netPrice" validate={validateInvoiceItemsInput} defaultValue={0}/>
         </SimpleForm>
     </Edit>
 );
@@ -29,7 +38,7 @@ export const InvoiceItemCreate = () => (
             <TextInput source="id" />
             <TextInput source="title" />
             <TextInput source="unit" />
-            <TextInput source="netPrice" />
+            <TextInput source="netPrice" validate={validateInvoiceItemsInput} defaultValue={0} />
         </SimpleForm>
     </Create>
 )
