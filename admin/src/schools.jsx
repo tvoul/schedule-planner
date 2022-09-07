@@ -19,7 +19,7 @@ export const SchoolEdit = () => (
         <SimpleForm>
             <TextInput disabled source="id" />
             <TextInput source="name" />
-            <TextInput source="shortname" />
+            <TextInput source="shortName" />
         </SimpleForm>
     </Edit>
 
@@ -30,7 +30,7 @@ export const SchoolCreate = props => (
         <SimpleForm>
             <TextInput disabled source="id" />
             <TextInput source="name" />
-            <TextInput source="shortname" />
+            <TextInput source="shortName" />
         </SimpleForm>
     </Create>
 );

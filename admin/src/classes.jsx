@@ -13,7 +13,7 @@ export const ClassList = () => (
             <TextField source="defaultStartTime" />
             <TextField source="defaultEndTime" />
             <TextField source="defaultInvoiceItem" />
-            <TextField source="defaultHourPerDay" />
+            <TextField source="defaultHoursPerDay" />
             <EditButton />
 
         </Datagrid>
@@ -34,7 +34,7 @@ export const ClassEdit = () => (
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
             <TextInput source="defaultInvoiceItem" />
-            <TextInput source="defaultHourPerDay" />
+            <TextInput source="defaultHoursPerDay" />
             <EditButton />
         </SimpleForm>
     </Edit>
@@ -53,7 +53,7 @@ export const ClassCreate = props => (
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
             <TextInput source="defaultInvoiceItem" />
-            <TextInput source="defaultHourPerDay" />
+            <TextInput source="defaultHoursPerDay" />
             <EditButton />
         </SimpleForm>
     </Create>
