@@ -1,4 +1,4 @@
-import { Datagrid, EmailField, List, TextField, BooleanField, Edit, EditButton, SimpleForm, Create, TextInput, BooleanInput, PasswordInput } from 'react-admin';
+import { Datagrid, EmailField, List, TextField, BooleanField, Edit, EditButton, SimpleForm, Create, TextInput, BooleanInput, PasswordInput, required, } from 'react-admin';
 
 // ?? Need filter for List to be able to serach teachers later on ?? (Different feature)
 export const TeacherList = () => (
@@ -19,6 +19,14 @@ export const TeacherList = () => (
     </List>
 );
 
+const validateInput = async (values) => {
+    const errors = {};
+    if (!values.hide) {
+        errors.hide = "This value is required!";
+    }
+ }
+
+ const hideValidator = [required(), validateInput]
 
 export const TeacherEdit = () => (
     <Edit title="Edit teachers">
@@ -29,7 +37,7 @@ export const TeacherEdit = () => (
             <TextInput source="initials" />
             <TextInput source="phone" />
             <TextInput label="Email Address" source="email" type="email" />
-            <BooleanInput label="hide" source="hide" />
+            <BooleanInput label="hide" source="hide" validate={hideValidator} defaultValue={0} />
             <PasswordInput source="password" />
             <TextInput source="roles" />
         </SimpleForm>
@@ -46,9 +54,12 @@ export const TeacherCreate = props => (
             <TextInput source="initials" />
             <TextInput source="phone" />
             <TextInput label="Email Address" source="email" type="email" />
-            <BooleanInput label="hide" source="hide" />
+            <BooleanInput label="hide" source="hide" validate={hideValidator} defaultValue={0} />
             <PasswordInput source="password" />
             <TextInput source="roles" />
         </SimpleForm>
     </Create>
 );
+//?? Maybe email need to be validated if it is correct form ?? 
+// const validateEmail = email(); 
+// Add validate={validateEmail} to <TextInput label="Email Addres" ....

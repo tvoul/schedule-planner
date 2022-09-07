@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm } from 'react-admin';
+import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required} from 'react-admin';
 
 
 export const CourseList = () => (
@@ -6,7 +6,7 @@ export const CourseList = () => (
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />
-            <TextField source="shortname" />
+            <TextField source="shortName" />
             <TextField source="class" />
             <TextField source="points" />
             <TextField source="startDate" />
@@ -19,13 +19,22 @@ export const CourseList = () => (
         </Datagrid>
     </List>
 );
+
+const validateInput = async (values) => {
+    const errors = {};
+    if (!values.hide) {
+        errors.hide = "This value is required!";
+    }
+}
+
+const hideValidator = [required(), validateInput]
+
 // !Edited @R: TextFiled -> TextInput intstead 
 export const CourseEdit = () => (
     <Edit title="Edit courses">
         <SimpleForm>
-            <TextInput source="id" />
             <TextInput source="name" />
-            <TextInput source="shortname" />
+            <TextInput source="shortName" />
             <TextInput source="class" />
             <TextInput source="points" />
             <TextInput source="startDate" />
@@ -33,25 +42,24 @@ export const CourseEdit = () => (
             <TextInput source="plan" />
             <TextInput source="invoiceItem" />
             <TextInput source="hoursPerDay" />
-            <BooleanInput source="hide" />
+            <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>
     </Edit>
 );
 
 export const CourseCreate = props => (
     <Create {...props}>
-        <SimpleForm>
-            <TextInput source="id" />
+        <SimpleForm> 
             <TextInput source="name" />
-            <TextInput  source="shortname" />
-            <TextInput  source="class" />
-            <TextInput  source="points" />
+            <TextInput source="shortName" />
+            <TextInput source="class" />
+            <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
             <TextInput source="invoiceItem" />
             <TextInput source="hoursPerDay" />
-            <BooleanInput source="hide" />
+            <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>
     </Create>
 );

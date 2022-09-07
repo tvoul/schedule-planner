@@ -28,7 +28,7 @@ export const SchoolEdit = () => (
 export const SchoolCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput disabled source="id" />
+           
             <TextInput source="name" />
             <TextInput source="shortName" />
         </SimpleForm>
