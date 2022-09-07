@@ -1,0 +1,1374 @@
+{
+	"info": {
+		"_postman_id": "7579431e-ecd6-4210-a3a2-880d36707b0e",
+		"name": "admin-tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19919123"
+	},
+	"item": [
+		{
+			"name": "Get before login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var mockResp = { \"message\": \"not logged in\"}\r",
+							"var response = pm.response.json()\r",
+							"\r",
+							"pm.test('Check that i am not logged in from start', () => {\r",
+							"    pm.expect(response).to.include(mockResp)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login as admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var mockResp = { \"loggedIn\": true}\r",
+							"let response = pm.response.json()\r",
+							"\r",
+							"pm.test('Check that i was able to log in', () => {\r",
+							"    pm.expect(response).to.eql(mockResp)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"exempel@nodehill.com\",\r\n    \"password\": \"abc123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to create a teacher\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"test\", \r\n    \"lastname\":\"teste\",  \r\n    \"email\":\"sjkajds@jhgdsd.se\",\r\n    \"password\": \"aga\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/teachers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"teachers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when user tries to create a teacher\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"test\", \r\n    \"lastname\":\"teste\",  \r\n    \"initials\":\"TT\",\r\n    \"email\":\"sjkajds@jhgdsd.se\",\r\n    \"password\": \"abc123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/teachers/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"teachers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the teacher after update",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json()\r",
+							"let mockresp = {\"firstname\": \"test\", \"lastname\": \"teste\"}\r",
+							"\r",
+							"pm.test(\"Check that the new names has been stored\", function(){\r",
+							"    pm.expect(response).to.include(mockresp)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to create a teacher\", function(){\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/teachers/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"teachers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the teacher",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// get the response datamockTestProducts\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/teachers/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"teachers",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get holidays",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that admin get 200 (ok) when trying to se holidays\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/holidays",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"holidays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create holiday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when user tries to create a holiday\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"date\": \"2022-10-17\",\r\n     \"name\":\"funday\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/holidays",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"holidays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit holiday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when admin is trying to edit a holiday\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"date\": \"2022-10-17\",\r\n     \"name\":\"Maria Birthday\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/holidays/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"holidays",
+						"{{id}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a holiday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when user tries to delete a holiday\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/holidays/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"holidays",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get schools",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that users get 200 (ok) when trying to se schools\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/schools",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"schools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new school",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to create a school\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"TesterSchool\", \r\n    \"shortName\":\"TS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/schools",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"schools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit school",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to edit a school\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Tester Schools\", \r\n    \"shortName\":\"TS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/schools/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"schools",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a school",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to delete a school\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/schools/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"schools",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get classes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that user get response 200 (ok) when trying to se classes\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/classes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to create a class\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Testerclass\", \r\n    \"shortName\":\"TC\",\r\n    \"blog\":\"https://devop.lms.nodehill.com/\",\r\n    \"hide\":\"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/classes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to create a class\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Testerclass\", \r\n    \"shortName\":\"TC\",\r\n    \"blog\":\"https://devop.lms.nodehill.com/\",\r\n    \"hide\":\"0\",\r\n    \"defaultHoursPerDay\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/classes/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"classes",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to delete a class\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/classes/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"classes",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get courses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that amin gets 200 (ok) when trying to se courses\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to create a course\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"name\":\"Testcours\", \r\n      \"shortName\":\"TC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to edit a course\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"name\":\"Testcours\", \r\n      \"shortName\":\"TC\",\r\n      \"points\": 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/courses/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"courses",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to delete a class\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/course/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"course",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get invoices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that admin get 200 (ok) when trying to se invoices\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get invoice items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that admin get 200 (ok) when trying to se invoices\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/invoice_items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoice_items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a invoice item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to create a invoice item\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"title\": \"Undervisning\",\r\n        \"unit\": \"timmar\",\r\n        \"netPrice\": 8699\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/invoice_items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoice_items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a invoice item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that we get lastInsertRowid as a number\", function(){\r",
+							"    pm.expect(response.lastInsertRowid).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"let idSetter = response.lastInsertRowid\r",
+							"pm.globals.set(\"id\", idSetter )\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to create a invoice item\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"title\": \"Undervisning\",\r\n        \"unit\": \"timmar\",\r\n        \"netPrice\": 600\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/invoice_items/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoice_items",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a invoice item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that the database reports 1 change\", function(){\r",
+							"    pm.expect(response.changes).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check that response code is 200 (ok) when admin tries to delete a class\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/invoice_items/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoice_items",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var mockResp ={\"loggedIn\": false }\r",
+							"var response = pm.response.json()\r",
+							"\r",
+							"pm.test('Check that i was logged out', () => {\r",
+							"    pm.expect(response).to.eql(mockResp)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

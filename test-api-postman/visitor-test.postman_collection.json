@@ -1,0 +1,1209 @@
+{
+	"info": {
+		"_postman_id": "959a2823-7e02-41ed-ba55-f96f2bc2f566",
+		"name": "visitor-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19919123"
+	},
+	"item": [
+		{
+			"name": "Get before login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var mockResp = { \"loggedIn\": false}\r",
+							"var response = pm.response.json()\r",
+							"\r",
+							"pm.test('Check that i am not logged in from start', () => {\r",
+							"    pm.expect(response).to.include(mockResp)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get teachers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that visitors get 403 (forbidden) when trying to se teachers\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/teachers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"teachers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a teacher\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"Tester\", \r\n    \"lastname\":\"Teacher\",  \r\n    \"initials\": \"TT\",\r\n    \"phone\":\"08349547\",\r\n    \"email\":\"tester@nodehill.com\",\r\n    \"color\":\"#9300AD\",\r\n    \"hide\": \"0\",\r\n    \"password\": \"abc123\",\r\n    \"roles\": \"user\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/teachers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"teachers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a teacher\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"Tester\", \r\n    \"lastname\":\"Teacher\",  \r\n    \"initials\": \"TT\",\r\n    \"phone\":\"08349547\",\r\n    \"email\":\"tester@nodehill.com\",\r\n    \"color\":\"#9300AD\",\r\n    \"hide\": \"0\",\r\n    \"password\": \"abc123\",\r\n    \"roles\": \"user\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/teachers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"teachers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a teacher",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a teacher\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/teachers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"teachers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get holidays",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that visitors get 403 (forbidden) when trying to se holidays\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/holidays",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"holidays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create holiday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when user tries to create a holiday\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"date\": \"2022-10-17\",\r\n     \"name\":\"funday\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/holidays",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"holidays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update holiday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a holiday\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"date\": \"2022-10-17\",\r\n     \"name\":\"funday\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/holidays/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"holidays",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a holiday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a holiday\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/holidays/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"holidays",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get schools",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that visitors get 403 (forbidden) when trying to se schools\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/schools",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"schools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a school",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a school\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"TesterSchool\", \r\n    \"shortName\":\"TS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/schools",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"schools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a school",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to edit a school\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"TesterSchool\", \r\n    \"shortName\":\"TS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/schools/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"schools",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a school",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to delete a school\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/schools/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"schools",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get classes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that visitors get 403 (forbidden) when trying to se classes\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/classes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a class\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Testerclass\", \r\n    \"shortName\":\"TC\",\r\n    \"school\": 1,\r\n       \"blog\":\"https://devop.lms.nodehill.com/\",\r\n       \"hide\":\"0\",\r\n       \"defaultStartTim\":\"9:00\",\r\n       \"defaultEndTime\": \"15.00\",\r\n       \"defaultInvoiceItem\": 3,\r\n       \"defaultHoursPerDay\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/classes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to edit a class\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Testerclass\", \r\n    \"shortName\":\"TC\",\r\n    \"school\": 1,\r\n       \"blog\":\"https://devop.lms.nodehill.com/\",\r\n       \"hide\":\"0\",\r\n       \"defaultStartTim\":\"9:00\",\r\n       \"defaultEndTime\": \"15.00\",\r\n       \"defaultInvoiceItem\": 3,\r\n       \"defaultHoursPerDay\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/classes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"classes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a class",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to delete a class\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/classes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"classes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get courses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that visitors get 403 (forbidden) when trying to se courses\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a course\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"name\":\"Testcours\", \r\n      \"shortName\":\"TC\",\r\n      \"class\": 1,\r\n      \"points\": 25,\r\n      \"startDate\":\"9:00\",\r\n      \"endDate\": \"15.00\",\r\n      \"plan\": \"\",\r\n      \"invoiceItem\": 3,\r\n      \"hoursPerDay\": 6,\r\n      \"hide\":\"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a cours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to edit a course\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"name\":\"Testcours\", \r\n      \"shortName\":\"TC\",\r\n      \"class\": 1,\r\n      \"points\": 25,\r\n      \"startDate\":\"9:00\",\r\n      \"endDate\": \"15.00\",\r\n      \"plan\": \"\",\r\n      \"invoiceItem\": 3,\r\n      \"hoursPerDay\": 6,\r\n      \"hide\":\"0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/courses/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"courses",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to delete a course\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/courses/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"courses",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get invoices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that visitors get 403 (forbidden) when trying to se invoices\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a invoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a invoice\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"school\":\"\",\r\n    \"customHeadline\":3,\r\n    \"yourReference\":\"hs\",\r\n    \"ourReference\":\"hs\",\r\n    \"invoiceDate\":\"2022-10-10\",\r\n    \"dueDate\":\"2022-10-15\",\r\n    \"invoiceItems\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a invoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to edit a incoice\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"school\":\"\",\r\n    \"customHeadline\":3,\r\n    \"yourReference\":\"hs\",\r\n    \"ourReference\":\"hs\",\r\n    \"invoiceDate\":\"2022-10-10\",\r\n    \"dueDate\":\"2022-10-15\",\r\n    \"invoiceItems\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/invoices/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a invoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to delete a invoice\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/invoices/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get invoice item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check that visitors get 403 (forbidden) when trying to se invoice items\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/invoice_items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoice_items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a invoice item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to create a invoice item\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"school\":\"\",\r\n    \"customHeadline\":3,\r\n    \"yourReference\":\"hs\",\r\n    \"ourReference\":\"hs\",\r\n    \"invoiceDate\":\"2022-10-10\",\r\n    \"dueDate\":\"2022-10-15\",\r\n    \"invoiceItems\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a invoice item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to edit a invoice item\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Undervisning\",\r\n    \"unit\": \"timmar\",\r\n    \"netPrice\": 699\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7666/data/invoice_items/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoice_items",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a invoice item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check that response code is 403 (forbidden) when visitor tries to delete a invoice item\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7666/data/invoice_items/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7666",
+					"path": [
+						"data",
+						"invoice_items",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
