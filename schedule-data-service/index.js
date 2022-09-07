@@ -69,14 +69,6 @@ server.get('/data/courses/:from/:to', (req, res)=>{
   res.json(result)
 })
 
-server.post('/data/courses', (req, res)=>{
-  let query = "INSERT INTO courses VALUES(@id, @name, @shortName, @class, @points, @startDate, @endDate, @plan, @invoiceItem, @hoursPerDay)"
-  let statement = db.prepare(query)
-  let result = statement.run(req.body)
-  setResultHeaders(res, result)
-  res.json(result)
-})
-
 server.get('/data/classes_view/:all?', (req, res)=>{
   let query
   if(req.params.all){
@@ -128,56 +120,41 @@ server.get('/data/:table/:id', (req, res)=>{ // but limit which tables to query 
   res.json(result[0])
 })
 
-server.delete('/data/:table/:id', (request, response) =>{ // but limit which tables to query with ACL
-  let query = "DELETE FROM " + request.params.table + " WHERE id = @id"
-  let result;
-  try{
-    result = db.prepare(query).run({id: request.params.id})
-  }
-  catch(error){
-    console.log(error)
-  }
-  response.json(result)
-})
-
-server.put('/data/:table/:id', (request, response) =>{ // but limit which tables to query with ACL
-let query = "UPDATE " + request.params.table + " SET "
-for(const [key, value] of Object.entries(request.body))
-{
-  query += (`${key} = '${value}', `);
-}
-query = query.replace(/,\s*$/, "")
-query += ' WHERE id = @id'
-let result;
-try{
-  result = db.prepare(query).run({id: request.params.id})
-}
-catch(error){
-  console.log(error)
-}
-response.json(result)
-})
-
-server.post('/data/:table', (request, response) =>{ // but limit which tables to query with ACL
-  let query = "INSERT INTO " + request.params.table + " ("
-  for(const [key, value] of Object.entries(request.body))
-  {
-    query += (`${key},`)
-  }
-  query = query.replace(/,\s*$/, "")
-  query += ') VALUES ('
-  for(const [key, value] of Object.entries(request.body))
-  {
-    query += (`'${value}',`)
-  }
-  query = query.replace(/,\s*$/, "")
-  query += ');'
+server.post('/data/:table', (req, res)=>{ // limit which tables to query with ACL
+  let query = `INSERT INTO ${req.params.table} (${Object.keys(req.body).join(', ')}) VALUES(@${Object.keys(req.body).join(', @')})`
   let result
   try{
-    result = db.prepare(query).run
+    result = db.prepare(query).run(req.body)
+  }catch(e){
+    console.error(e)
   }
-  catch(error){
-    console.log(error)
+  res.json(result)
+})
+
+server.put('/data/:table/:id', (req, res)=>{ // limit which tables to query with ACL
+  req.body.id = req.params.id // move/replace the id into the body so it can be passed with the other replacements
+  let query = `UPDATE ${req.params.table} SET`
+  for(let key of Object.keys(req.body)){
+      query += ` ${key}=@${key},`
   }
-  response.json(result)
-  })
+  query = query.replace(/\,$/,'')
+  query += ` WHERE id = @id`        
+  let result
+  try{
+    result = db.prepare(query).run(req.body)
+  }catch(e){
+    console.error(e)
+  }
+  res.json(result)
+})
+
+server.delete('/data/:table/:id', (req, res)=>{ 
+  let query = "DELETE FROM " + req.params.table + " WHERE id = @id"
+  let result
+  try{
+    result = db.prepare(query).run({id:req.params.id})
+  }catch(e){
+    console.error(e)
+  }
+  res.json(result)
+})

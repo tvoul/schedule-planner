@@ -13,7 +13,7 @@ export const ClassList = () => (
             <TextField source="defaultStartTime" />
             <TextField source="defaultEndTime" />
             <TextField source="defaultInvoiceItem" />
-            <TextField source="defaultHourPerDay" />
+            <TextField source="defaultHoursPerDay" />
             <EditButton />
 
         </Datagrid>
