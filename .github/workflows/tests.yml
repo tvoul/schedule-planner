@@ -43,8 +43,6 @@ jobs:
     - run: npm install -g pm2
     - run: pm2 start "npm run dev"
     - run: npm install -g newman
-    - run: pm2 status
-    - run: pm2 logs --lines 50
-    # - run: newman run test-api-postman/admin-tests.postman_collection.json
-    # - run: newman run test-api-postman/user-tests.postman_collection.json
-    # - run: newman run test-api-postman/visitor-test.postman_collection.json
+    - run: newman run test-api-postman/admin-tests.postman_collection.json
+    - run: newman run test-api-postman/user-tests.postman_collection.json
+    - run: newman run test-api-postman/visitor-test.postman_collection.json
