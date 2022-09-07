@@ -5,29 +5,28 @@ on:
     branches: [dev-testing-actions]
 
 jobs:
-  # gui-tests:
-  #   runs-on: ubuntu-latest
-    
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Use Node.js
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: '16'
-  #       cache: 'npm'
-  #   - run: npm ci
-  #   - run: cd admin/ && npm ci && npm run build
-  #   - run: cd schedule-data-service/ && npm ci
-  #   - run: mv schedule-data-service/database/template_nodehill_schedule.db schedule-data-service/database/nodehill_schedule.db
-  #   - name: Cypress run
-  #     uses: cypress-io/github-action@v4
-  #     with:
-  #       browser: chrome
-  #       start: npm run dev
+
+  gui-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'npm'
+    - run: npm ci
+    - run: cd admin/ && npm ci && npm run build
+    - run: cd schedule-data-service/ && npm ci
+    - run: mv schedule-data-service/database/template_nodehill_schedule.db schedule-data-service/database/nodehill_schedule.db
+    - name: Cypress run
+      uses: cypress-io/github-action@v4
+      with:
+        browser: chrome
+        start: npm run dev
   
   api-tests:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
