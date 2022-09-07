@@ -36,17 +36,12 @@ jobs:
         node-version: '16'
         cache: 'npm'
     - run: npm ci
-    - run: pwd
-    - run: cd schedule-data-service/database/
-    - run: pwd
-    - run: mv template_nodehill_schedule.db nodehill_schedule.db
-    - run: cd ~
-    - run: pwd
+    - run: mv schedule-data-service/database/template_nodehill_schedule.db schedule-data-service/database/nodehill_schedule.db
     - run: ls schedule-data-service/database/
     - run: cd admin/ && npm ci && npm run build
     - run: cd schedule-data-service/ && npm ci
     - run: npm install -g pm2
-    - run: pm2 start schedule-data-service/index.js
+    - run: pm2 start "npm run dev"
     - run: npm install -g newman
     - run: pm2 status
     - run: pm2 logs --lines 50
