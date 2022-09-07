@@ -1093,7 +1093,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:7666/data/course/{{id}}",
+					"raw": "http://localhost:7666/data/courses/{{id}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1101,7 +1101,7 @@
 					"port": "7666",
 					"path": [
 						"data",
-						"course",
+						"courses",
 						"{{id}}"
 					]
 				}
