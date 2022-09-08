@@ -44,7 +44,7 @@ server.use('/assets', express.static('../admin/dist/assets'))
 
 // REST API routes
 
-require('./routes/teachers.js')(server, db)
+
 require('./routes/login.js')(server, db)
 
 
