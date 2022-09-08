@@ -19,26 +19,26 @@ export const TeacherList = () => (
     </List>
 );
 
-const validateInput = async (values) => {
+// Setting up valiation for required fields to create/edit a teacher 
+const validateCreate = async (values) => {
     const errors = {};
-    if (!values.hide) {
-        errors.hide = "This value is required!";
+    if (!values.email && !values.initials && !values.color && !values.hide) {
+        errors.email, errors.initials, errors.color, errors.hide = "This values is required! "
     }
 }
 const validateEmail = email()
+const createValidator = [required(), validateCreate]
 
-const hideValidator = [required(), validateInput]
-
-// Admin wants to 
+// Probably we can add authorization that only user who logged in with the same email can edit password
 export const TeacherEdit = () => (
     <Edit title="Edit teachers">
         <SimpleForm>
             <TextInput source="firstname" />
             <TextInput source="lastname" />
-            <TextInput source="initials" />
+            <TextInput source="initials" validate={createValidator} />
             <TextInput source="phone" />
-            <TextInput label="Email Address" source="email" type="email" validate={validateEmail} />
-            <BooleanInput label="hide" source="hide" validate={hideValidator} defaultValue={0} />
+            <TextInput label="Email Address" source="email" type="email" validate={validateEmail, createValidator} />
+            <BooleanInput label="hide" source="hide" validate={createValidator}  defaultValue={0} />
             <PasswordInput source="password" />
             <TextInput source="roles" />
         </SimpleForm>
@@ -50,10 +50,10 @@ export const TeacherEdit = () => (
 export const TeacherCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="initials" />
-            <TextInput label="Email Address" source="email" type="email" validate={validateEmail} />
-            <TextField source="color" />
-            <BooleanInput label="hide" source="hide" validate={hideValidator} defaultValue={0} />
+            <TextInput source="initials" validate={createValidator}  />
+            <TextInput label="Email Address" source="email" type="email" validate={validateEmail, validateCreate} />
+            <TextField source="color" validate={createValidator}  />
+            <BooleanInput label="hide" source="hide" validate={createValidator}  defaultValue={0} />
         </SimpleForm>
     </Create>
 );
