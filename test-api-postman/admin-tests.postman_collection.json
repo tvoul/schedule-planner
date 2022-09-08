@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "7579431e-ecd6-4210-a3a2-880d36707b0e",
+		"_postman_id": "978c07f0-07aa-4367-9f0e-2462623ff9d1",
 		"name": "admin-tests",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19919123"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -131,7 +130,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\":\"test\", \r\n    \"lastname\":\"teste\",  \r\n    \"email\":\"sjkajds@jhgdsd.se\",\r\n    \"password\": \"aga\"\r\n    \r\n}",
+					"raw": "{\r\n    \"email\":\"test@nodehill.com\",\r\n    \"initials\":\"ts\",\r\n    \"color\":\"#a1ace3\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

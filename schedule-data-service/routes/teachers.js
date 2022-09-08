@@ -10,32 +10,6 @@ module.exports = function(server, db){
     res.json(result)
   })
 
-  // registrera en ny lärare
-  server.post('/data/teachers', (request, response) => {
-    let user = request.body
-    let encryptedPassword = encrypt(user.password)
-    let result
-    try{
-      result = db.prepare('INSERT INTO teachers (email, password) VALUES(?,?)').run([user.email, encryptedPassword])
-    }catch(e){
-      console.error(e)
-    }
-    response.json(result)
-  })
-
-
-  // komplettera profil för användare
-  server.put('/data/teachers', (request, response) => {
-    let user = request.body
-    let result
-    try{
-      result = db.prepare('UPDATE teachers SET firstname = ?, lastname = ?, initials = ?, phone = ?, color = ?, hide = ? WHERE email = ?').run([user.firstname, user.lastname, user.initials, user.phone, user.color, user.hide, user.email])
-    }catch(e){
-      console.error(e)
-    }
-    response.json(result)
-  })
-
   // begär ändring av lösenord för användare
   server.delete('/data/teachers/password', (request, response) => {
     let user = request.body
