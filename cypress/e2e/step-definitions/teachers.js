@@ -18,5 +18,9 @@ Then("the i should be able to see the data from the teachers table", () =>{
 })
 
 Then("i should be able to add a teacher", () =>{
-    cy.get('#main-content > div > div > div.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-1fyoe53 > div > a').click()
+    cy.get('#main-content > div > div > div.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.css-1fyoe53 > div > a').click({force: true})
+    cy.get('#email').type('kalle@nodehill.com')
+    cy.get('#initials').type('kl')
+    cy.get('#color').type('71b2de')
+    cy.get('#main-content > div > div > div > form > div.MuiToolbar-root.MuiToolbar-gutters.MuiToolbar-regular.RaToolbar-desktopToolbar.css-1uwir8t > div > button').click()
 })

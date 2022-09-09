@@ -6,9 +6,9 @@ Feature: Teachers
         Then the i should be able to see the data from the teachers table
         
     Scenario: add teacher
-        Given that i have logged in as a admin
-        And im on the admin page
-        When i click on teachers
+        Given that I am logged in as admin
+        And that I am on the admin page
+        When I click on the teachers button
         Then i should be able to add a teacher
 
     # Scenario: Edit invoice teachers information
