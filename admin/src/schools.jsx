@@ -12,8 +12,8 @@ export const SchoolList = () => (
         </Datagrid>
     </List>
 );
-//Edit button needs to be functional 
-//To be able to Edit and School be able to change access list 
+
+
 export const SchoolEdit = () => (
     <Edit title="Edit schools">
         <SimpleForm>
