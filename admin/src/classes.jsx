@@ -1,7 +1,7 @@
-import { SchoolSharp } from '@mui/icons-material';
-import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, choices, SelectInput, TimeInput} from 'react-admin';
+import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, SelectInput} from 'react-admin';
 //import { TimePicker } from '@mui/x-date-pickers';
-// classes m-1 school <ReferenceManyField> 
+
+// classes m-1 school <ReferenceManyField>
 export const ClassList = () => (
     <List>
         <Datagrid rowClick='edit'>
@@ -37,13 +37,13 @@ export const ClassEdit = () => (
             <TextInput source="name" />
             <TextInput source="shortName" />
             <TextInput disabled source="school" />
-            <ReferenceInput source="id" reference="schools" >
+            <ReferenceInput label="school" source="schools.id" reference="schools" >
                 <SelectInput  />
             </ReferenceInput>
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0}/>
-            <TimeInput source="defaultStartTime" />
-            <TimeInput source="defaultEndTime" />
+            <TextInput source="defaultStartTime" />
+            <TextInput source="defaultEndTime" />
             <TextInput source="defaultInvoiceItem" />
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
@@ -58,12 +58,12 @@ export const ClassCreate = props => (
             <TextInput source="name" />
             <TextInput source="shortName" />
             <ReferenceInput label="school" source="id" reference="schools">
-                <SelectInput  />
+                <SelectInput  label="school"/>
             </ReferenceInput> 
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0} />
-            <TimeInput source="defaultStartTime" />
-            <Timenput source="defaultEndTime" />
+            <TextInput source="defaultStartTime" />
+            <TextInput source="defaultEndTime" />
             <TextInput source="defaultInvoiceItem" />
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
