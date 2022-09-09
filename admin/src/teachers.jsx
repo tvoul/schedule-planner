@@ -28,7 +28,6 @@ const validateInitial = async (values) => {
     if (!values.initial) {
         errors.initial = "Initials are required!"
     }
-    return errors
 };
 const initialValidator = [required(), validateInitial]
 
@@ -37,8 +36,8 @@ const validatecolor = async (values) => {
     if (!values.color) {
         errors.color = "color is required!"
     }
-    return errors
 };
+
 const colorValidator = [required(), validatecolor]
 
 
@@ -67,7 +66,7 @@ export const TeacherCreate = props => (
             <TextInput source="initials" validate={initialValidator} />
             <TextInput label="Email Address" source="email" type="email" validate={emailValidator} />
             <TextInput source="color" validate={colorValidator}/>
-            <BooleanInput label="hide" source="hide"defaultValue={0} />
+            <BooleanInput label="hide" source="hide" defaultValue={0} />
         </SimpleForm>
     </Create>
 );
