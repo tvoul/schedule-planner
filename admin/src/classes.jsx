@@ -1,4 +1,4 @@
-import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceField, ReferenceInput, SelectInput} from 'react-admin';
+import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, SelectInput} from 'react-admin';
 //import { TimePicker } from '@mui/x-date-pickers';
 
 // classes m-1 school <ReferenceManyField>
@@ -8,9 +8,7 @@ export const ClassList = () => (
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="shortName" />
-            <ReferenceField label="school" source="id" reference="schools">
-                <TextField label="school" source="school" />
-            </ReferenceField>
+            <TextField label="school" source="school" />
             <TextField source="blog" />
             <BooleanField source="hide" />
             <TextField source="defaultStartTime" />

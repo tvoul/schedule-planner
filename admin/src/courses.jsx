@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required, ReferenceInput, SelectInput, ReferenceField} from 'react-admin';
+import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required, ReferenceInput, SelectInput} from 'react-admin';
 
 
 export const CourseList = () => (
@@ -7,9 +7,7 @@ export const CourseList = () => (
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="shortName" />
-            <ReferenceField label="class" source="id" reference="classes">
-                <TextField source="class" />
-            </ReferenceField>
+            <TextField source="class" />
             <TextField source="points" />
             <TextField source="startDate" />
             <TextField source="endDate" />
