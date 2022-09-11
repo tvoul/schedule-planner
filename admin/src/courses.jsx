@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required} from 'react-admin';
+import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required, ReferenceInput, SelectInput, ReferenceField} from 'react-admin';
 
 
 export const CourseList = () => (
@@ -7,12 +7,16 @@ export const CourseList = () => (
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="shortName" />
-            <TextField source="class" />
+            <ReferenceField label="class" source="id" reference="classes">
+                <TextField source="class" />
+            </ReferenceField>
             <TextField source="points" />
             <TextField source="startDate" />
             <TextField source="endDate" />
             <TextField source="plan" />
-            <TextField source="invoiceItem" />
+            <ReferenceField label="invoiceItem" source="id" reference="invoice_items">
+                <TextField source="invoiceItem" />
+            </ReferenceField> 
             <TextField source="hoursPerDay" />
             <BooleanField source="hide" />
             <EditButton />
@@ -35,12 +39,16 @@ export const CourseEdit = () => (
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput source="class" defaultValue={null}/>
+            <ReferenceInput label="class" source="id" reference="classes">
+                <SelectInput label="class" source="class" />
+            </ReferenceInput>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <TextInput source="invoiceItem" defaultValue={null}/>
+            <ReferenceInput label="invoice Item" source="id" reference="invoice_items">
+                <TextInput label="invoice Item" source="invoiceItem" />
+            </ReferenceInput>
             <TextInput source="hoursPerDay" />
             <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>
@@ -52,12 +60,16 @@ export const CourseCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput source="class" defaultValue={null}/>
+            <ReferenceInput label="class" source="id" reference="classes">
+                <SelectInput label="class" source="class" />
+            </ReferenceInput>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <TextInput source="invoiceItem" defaultValue={null}/>
+            <ReferenceInput label="invoice Item" source="id" reference="invoice_items">
+                <TextInput label="invoice Item" source="invoiceItem" />
+            </ReferenceInput>
             <TextInput source="hoursPerDay" />
             <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>

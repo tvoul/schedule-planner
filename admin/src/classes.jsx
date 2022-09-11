@@ -1,4 +1,4 @@
-import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, SelectInput} from 'react-admin';
+import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceField, ReferenceInput, SelectInput} from 'react-admin';
 //import { TimePicker } from '@mui/x-date-pickers';
 
 // classes m-1 school <ReferenceManyField>
@@ -7,8 +7,10 @@ export const ClassList = () => (
         <Datagrid rowClick='edit'>
             <TextField source="id" />
             <TextField source="name" />
-            <TextField source="shortName" />    
-            <TextField source="school" />
+            <TextField source="shortName" />
+            <ReferenceField label="school" source="id" reference="schools">
+                <TextField label="school" source="school" />
+            </ReferenceField>
             <TextField source="blog" />
             <BooleanField source="hide" />
             <TextField source="defaultStartTime" />
@@ -36,10 +38,8 @@ export const ClassEdit = () => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-
-        <TextInput disabled source="school" defaultValue={null} />
-            <ReferenceInput label="school" source="schools.id" reference="schools" >
-                <SelectInput  />
+            <ReferenceInput label="school" source="id" reference="schools" >
+                <SelectInput label="school" source="school" />
             </ReferenceInput>
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0}/>
@@ -58,7 +58,7 @@ export const ClassCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput label="school" source="id" reference="schools" defaultValue={null}>
+            <ReferenceInput label="school" source="id" reference="schools" >
                 <SelectInput  label="school"/>
             </ReferenceInput> 
             <TextInput source="blog" />
