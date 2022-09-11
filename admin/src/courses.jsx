@@ -12,9 +12,7 @@ export const CourseList = () => (
             <TextField source="startDate" />
             <TextField source="endDate" />
             <TextField source="plan" />
-            <ReferenceField label="invoiceItem" source="id" reference="invoice_items">
-                <TextField source="invoiceItem" />
-            </ReferenceField> 
+            <TextField source="invoiceItem" />
             <TextField source="hoursPerDay" />
             <BooleanField source="hide" />
             <EditButton />
