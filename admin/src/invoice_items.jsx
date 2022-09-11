@@ -1,7 +1,7 @@
 import { Datagrid, List, TextField, EditButton, Edit, SimpleForm, TextInput, Create, required  } from 'react-admin';
 
 export const InvoiceItemList = () => (
-    <List>
+    <List pagination={false}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="title" />

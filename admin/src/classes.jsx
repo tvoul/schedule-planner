@@ -3,7 +3,7 @@ import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextI
 
 // classes m-1 school <ReferenceManyField>
 export const ClassList = () => (
-    <List>
+    <List pagination={false}>
         <Datagrid rowClick='edit'>
             <TextField source="id" />
             <TextField source="name" />
@@ -36,7 +36,8 @@ export const ClassEdit = () => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput disabled source="school" />
+
+        <TextInput disabled source="school" defaultValue={null} />
             <ReferenceInput label="school" source="schools.id" reference="schools" >
                 <SelectInput  />
             </ReferenceInput>
@@ -44,7 +45,7 @@ export const ClassEdit = () => (
             <BooleanInput source="hide" validate={validator} defaultValue={0}/>
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <TextInput source="defaultInvoiceItem" />
+            <TextInput source="defaultInvoiceItem" defaultValue={null}/>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
         </SimpleForm>
@@ -57,14 +58,14 @@ export const ClassCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput label="school" source="id" reference="schools">
+            <ReferenceInput label="school" source="id" reference="schools" defaultValue={null}>
                 <SelectInput  label="school"/>
             </ReferenceInput> 
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0} />
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <TextInput source="defaultInvoiceItem" />
+            <TextInput source="defaultInvoiceItem" defaultValue={null}/>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
         </SimpleForm>

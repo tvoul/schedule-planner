@@ -2,7 +2,7 @@ import { Datagrid, EmailField, List, TextField, BooleanField, Edit, EditButton, 
 //import { makeStyles } from '@material-ui/core/styles';
 // ?? Need filter for List to be able to serach teachers later on ?? (Different feature)
 export const TeacherList = () => (
-    <List>
+    <List pagination={false}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="firstname" />

@@ -3,7 +3,7 @@ import { Datagrid, List, TextField, Edit, EditButton, SimpleForm, Create, TextIn
 
 // ?? Need filter for List to be able to serach teachers later on ?? (Different feature)
 export const SchoolList = () => (
-    <List>
+    <List pagination={false}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />

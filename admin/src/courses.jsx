@@ -2,7 +2,7 @@ import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, Text
 
 
 export const CourseList = () => (
-    <List>
+    <List pagination={false}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />
@@ -35,12 +35,12 @@ export const CourseEdit = () => (
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput source="class" />
+            <TextInput source="class" defaultValue={null}/>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <TextInput source="invoiceItem" />
+            <TextInput source="invoiceItem" defaultValue={null}/>
             <TextInput source="hoursPerDay" />
             <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>
@@ -52,12 +52,12 @@ export const CourseCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput source="class" />
+            <TextInput source="class" defaultValue={null}/>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <TextInput source="invoiceItem" />
+            <TextInput source="invoiceItem" defaultValue={null}/>
             <TextInput source="hoursPerDay" />
             <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>
