@@ -1,4 +1,4 @@
-import { Given, When, Then, And } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, And } from "@badeball/cypress-cucumber-preprocessor";
 
 Given("that I am logged in as admin", () =>{
     cy.visit(Cypress.env('baseUrl'))
