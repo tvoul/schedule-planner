@@ -8,7 +8,7 @@ Hi! The development team for this project consists of:
 
 
 We communicate on Discord, plan on Miro and keep track of the project through Trello. As a new teammember you get access to these - if you haven't already gotten access ask Tomas (Discord) and Dennis (Trello/Miro).
-## How we work
+# How we work
 In this project we work with scum-metology and have an agile way of thinking. That means that means that we work in sprints and use daily standups to keep track of the work. Dennis is our scrum master and the one to invite and structuring the daily standups. We often meet at nine sharp to talk over what we have done, if we met any problems and what we are going to do during the day. We don’t do problem-solving during these meetings, that’s something we do after in smaller groups. 
 
 # How to get started
@@ -46,14 +46,14 @@ Feature branches are where you develop your features and is where you do moste o
 Remember to push, pull and commit often! We dont want hours of work to go to waste and we work mvp (minimum viable product).
 
 ## Naming-convention 
-Feature branches should always start with dev and after you write your feature **dev-describe-feature**. 
+Feature branches should always start with the name **dev** and after you write your **feature**. Example: **'dev-describe-feature'**. 
 
 ## Merging
-A feature branch may branch off from:
+A feature branch should always branch off from:
 
 - dev-branch
 
-Must merge back into:
+and must merge back into:
 
 - dev-branch
 
