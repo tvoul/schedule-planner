@@ -1,4 +1,4 @@
-import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, SelectInput} from 'react-admin';
+import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, SelectInput, ReferenceField} from 'react-admin';
 //import { TimePicker } from '@mui/x-date-pickers';
 
 // classes m-1 school <ReferenceManyField>
@@ -43,7 +43,9 @@ export const ClassEdit = () => (
             <BooleanInput source="hide" validate={validator} defaultValue={0}/>
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <TextInput source="defaultInvoiceItem" defaultValue={null}/>
+            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" >
+                <SelectInput optionText="title"/>
+            </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
         </SimpleForm>
@@ -63,7 +65,9 @@ export const ClassCreate = props => (
             <BooleanInput source="hide" validate={validator} defaultValue={0} />
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <TextInput source="defaultInvoiceItem" defaultValue={null}/>
+            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" >
+                <SelectInput optionText="title" />
+            </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
         </SimpleForm>
