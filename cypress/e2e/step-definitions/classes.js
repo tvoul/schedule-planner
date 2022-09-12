@@ -1,7 +1,7 @@
 import { When, Then} from "@badeball/cypress-cucumber-preprocessor";
 
 When("I click on the classes button", () =>{
-    cy.get('#root > div > div > div > main > div.MuiDrawer-root.RaSidebar-docked.MuiDrawer-docked.css-j24rge > div > div > div > a:nth-child(6)').click()
+    cy.get('#root > div > div > div > main > div.MuiDrawer-root.RaSidebar-docked.MuiDrawer-docked.css-j24rge > div > div > div > a:nth-child(5)').click()
 })
 
 Then("i should be able to add a class", () =>{
