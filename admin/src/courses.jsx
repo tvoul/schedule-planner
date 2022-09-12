@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required} from 'react-admin';
+import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required, ReferenceInput, SelectInput} from 'react-admin';
 
 
 export const CourseList = () => (
@@ -35,12 +35,16 @@ export const CourseEdit = () => (
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput source="class" defaultValue={null}/>
+            <ReferenceInput source="class" reference="classes" defaultValue={null}>
+                <SelectInput optionText="name" />
+            </ReferenceInput>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <TextInput source="invoiceItem" defaultValue={null}/>
+            <ReferenceInput source="invoiceItem" reference="invoice_items" defaultValue={null}>
+                <SelectInput  optionText="title" />
+            </ReferenceInput>
             <TextInput source="hoursPerDay" />
             <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>
@@ -52,12 +56,16 @@ export const CourseCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput source="class" defaultValue={null}/>
+            <ReferenceInput source="class" reference="classes">
+                <SelectInput optionText="name" defaultValue={null}/>
+            </ReferenceInput>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <TextInput source="invoiceItem" defaultValue={null}/>
+            <ReferenceInput source="invoiceItem" reference="invoice_items">
+                <SelectInput optionText="title" defaultValue={null}/>
+            </ReferenceInput>
             <TextInput source="hoursPerDay" />
             <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
         </SimpleForm>

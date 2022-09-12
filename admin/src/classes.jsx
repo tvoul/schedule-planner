@@ -1,13 +1,14 @@
-import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required} from 'react-admin';
+import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, SelectInput, ReferenceField} from 'react-admin';
+//import { TimePicker } from '@mui/x-date-pickers';
 
-
+// classes m-1 school <ReferenceManyField>
 export const ClassList = () => (
     <List pagination={false}>
         <Datagrid rowClick='edit'>
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="shortName" />
-            <TextField source="school" />
+            <TextField label="school" source="school" />
             <TextField source="blog" />
             <BooleanField source="hide" />
             <TextField source="defaultStartTime" />
@@ -35,12 +36,16 @@ export const ClassEdit = () => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput source="school" defaultValue={null}/>
+            <ReferenceInput source="school" reference="schools" defaultValue={null} >
+                <SelectInput optionText="name" />
+            </ReferenceInput>
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0}/>
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <TextInput source="defaultInvoiceItem" defaultValue={null}/>
+            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" defaultValue={null} >
+                <SelectInput optionText="title"/>
+            </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
         </SimpleForm>
@@ -53,12 +58,16 @@ export const ClassCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <TextInput source="school" defaultValue={null}/>
+            <ReferenceInput source="school" reference="schools"  >
+                <SelectInput optionText="name" defaultValue={null}/>
+            </ReferenceInput>
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0} />
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <TextInput source="defaultInvoiceItem" defaultValue={null}/>
+            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" >
+                <SelectInput optionText="title" defaultValue={null}/>
+            </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
             <EditButton />
         </SimpleForm>
