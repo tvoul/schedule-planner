@@ -37,14 +37,16 @@ export const ClassEdit = () => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput label="school" source="id" reference="schools" >
-                <SelectInput label="school" source="school" />
+            <ReferenceInput source="school" reference="schools" defaultValue={null} >
+                <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0}/>
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <TextInput source="defaultInvoiceItem" defaultValue={null}/>
+            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" defaultValue={null} >
+                <SelectInput optionText="title"/>
+            </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
         </SimpleForm>
     </Edit>
@@ -56,14 +58,16 @@ export const ClassCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput label="school" source="id" reference="schools" >
-                <SelectInput  label="school"/>
-            </ReferenceInput> 
+            <ReferenceInput source="school" reference="schools"  >
+                <SelectInput optionText="name" defaultValue={null}/>
+            </ReferenceInput>
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0} />
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <TextInput source="defaultInvoiceItem" defaultValue={null}/>
+            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" >
+                <SelectInput optionText="title" defaultValue={null}/>
+            </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
         </SimpleForm>
     </Create>

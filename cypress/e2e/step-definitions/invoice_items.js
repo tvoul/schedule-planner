@@ -1,7 +1,7 @@
 import { When, Then} from "@badeball/cypress-cucumber-preprocessor";
 
 When("I click on the invoice items button", () =>{
-    cy.get('#root > div > div > div > main > div.MuiDrawer-root.RaSidebar-docked.MuiDrawer-docked.css-j24rge > div > div > div > a:nth-child(4)').click()
+    cy.get('#root > div > div > div > main > div.MuiDrawer-root.RaSidebar-docked.MuiDrawer-docked.css-j24rge > div > div > div > a:nth-child(6)').click()
 })
 
 Then("i should be able to add an invoice item", () =>{

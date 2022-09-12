@@ -35,15 +35,15 @@ export const CourseEdit = () => (
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput label="class" source="id" reference="classes">
-                <SelectInput label="class" source="class" />
+            <ReferenceInput source="class" reference="classes" defaultValue={null}>
+                <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <ReferenceInput label="invoice Item" source="id" reference="invoice_items">
-                <TextInput label="invoice Item" source="invoiceItem" />
+            <ReferenceInput source="invoiceItem" reference="invoice_items" defaultValue={null}>
+                <SelectInput  optionText="title" />
             </ReferenceInput>
             <TextInput source="hoursPerDay" />
             <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
@@ -56,15 +56,15 @@ export const CourseCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput label="class" source="id" reference="classes">
-                <SelectInput label="class" source="class" />
+            <ReferenceInput source="class" reference="classes">
+                <SelectInput optionText="name" defaultValue={null}/>
             </ReferenceInput>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <ReferenceInput label="invoice Item" source="id" reference="invoice_items">
-                <TextInput label="invoice Item" source="invoiceItem" />
+            <ReferenceInput source="invoiceItem" reference="invoice_items">
+                <SelectInput optionText="title" defaultValue={null}/>
             </ReferenceInput>
             <TextInput source="hoursPerDay" />
             <BooleanInput source="hide" validate={hideValidator} defaultValue={0}/>
