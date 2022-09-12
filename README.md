@@ -16,7 +16,7 @@ To get started you need to clone the code from the Github repository and open it
 
 ### Install before start
 First you need to install Node Package Manager
-```json
+```bash
     npm install
     cd admin && npm install
     npm run build
@@ -24,7 +24,7 @@ First you need to install Node Package Manager
     cd schedule-data-service && npm install
 ```
 Start:
-```json
+```bash
     cd admin && npm run dev
     cd ..
     New terminal:
