@@ -36,8 +36,8 @@ export const ClassEdit = () => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput label="school" source="id" reference="schools" >
-                <SelectInput label="school" source="school" />
+            <ReferenceInput source="school" reference="schools" defaultValue={null} >
+                <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0}/>
@@ -56,9 +56,9 @@ export const ClassCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput label="school" source="id" reference="schools" >
-                <SelectInput  label="school"/>
-            </ReferenceInput> 
+            <ReferenceInput source="school" reference="schools" defaultValue={null} >
+                <SelectInput optionText="name"/>
+            </ReferenceInput>
             <TextInput source="blog" />
             <BooleanInput source="hide" validate={validator} defaultValue={0} />
             <TextInput source="defaultStartTime" />
