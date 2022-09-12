@@ -12,7 +12,26 @@ We communicate on Discord, plan on Miro and keep track of the project through Tr
 In this project we work with scum-metology and have an agile way of thinking. That means that means that we work in sprints and use daily standups to keep track of the work. Dennis is our scrum master and the one to invite and structuring the daily standups. We often meet at nine sharp to talk over what we have done, if we met any problems and what we are going to do during the day. We don’t do problem-solving during these meetings, that’s something we do after in smaller groups. 
 
 # How to get started
-To get started you need to clone the code from the Github repository and open it in your workin tool of choice. First you need to run "npm install" (Node Package Manager) in the terminal. Then you need to "cd schedule-data-service" before you use "npm start" to run the project. 
+To get started you need to clone the code from the Github repository and open it in your workin tool of choice. 
+
+### Install before start
+First you need to install Node Package Manager
+```json
+    npm install
+    cd admin && npm install
+    npm run build
+    cd.. 
+    cd schedule-data-service && npm install
+```
+Start:
+```json
+    cd admin && npm run dev
+    cd ..
+    New terminal:
+    cd schedula-data-service && npm start
+```
+
+First you need to run "npm install" (Node Package Manager) in the terminal. Then you need to "cd schedule-data-service" before you use "npm start" to run the project. 
 # Branching
 How we are working in branches:
 
@@ -51,10 +70,10 @@ This project has automated test trough GitHub actions and we are preform two typ
 
  The tests are gathered and automated to run in the test.yml workflow. test.yml are triggerd on pull and push from our protected default branch **dev**.
 
- To be able to merge in to our protected braches all tests need to pass before the it's sent for approval by the code owners. 
+ To be able to merge in to our protected braches all tests need to pass before the it's sent for approval by the codeowners. 
 
 
-## CD
+# CD
 (Place holder)
 - Feel free to write anything that comes to mind
 
@@ -62,7 +81,7 @@ This project has automated test trough GitHub actions and we are preform two typ
 
 When we are ready to go live with a new version of the project the dev branch will be merged into the main branch.
 
-First you merge main into dev. Then you may merge dev into main and trigger the process for a new version of the product to go live.
+First you merge main into dev to make shure that there are no conflicts between the two versions. Then you may merge dev into main and trigger the process for a new version of the product to go live.
 
 ## Schedule
 REST API Description at `/data`
