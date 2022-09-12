@@ -43,7 +43,7 @@ export const ClassEdit = () => (
             <BooleanInput source="hide" validate={validator} defaultValue={0}/>
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" >
+            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" defaultValue={null} >
                 <SelectInput optionText="title"/>
             </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
@@ -65,7 +65,7 @@ export const ClassCreate = props => (
             <BooleanInput source="hide" validate={validator} defaultValue={0} />
             <TextInput source="defaultStartTime" />
             <TextInput source="defaultEndTime" />
-            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" >
+            <ReferenceInput source="defaultInvoiceItem" reference="invoice_items" defaultValue={null}>
                 <SelectInput optionText="title" />
             </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />

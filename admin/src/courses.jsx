@@ -35,14 +35,14 @@ export const CourseEdit = () => (
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput source="class" reference="classes">
+            <ReferenceInput source="class" reference="classes" defaultValue={null}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <ReferenceInput source="invoiceItem" reference="invoice_items">
+            <ReferenceInput source="invoiceItem" reference="invoice_items" defaultValue={null}>
                 <SelectInput  optionText="title" />
             </ReferenceInput>
             <TextInput source="hoursPerDay" />
@@ -56,14 +56,14 @@ export const CourseCreate = props => (
         <SimpleForm> 
             <TextInput source="name" />
             <TextInput source="shortName" />
-            <ReferenceInput  source="class" reference="classes">
+            <ReferenceInput source="class" reference="classes" defaultValue={null}>
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="points" />
             <TextInput source="startDate" />
             <TextInput source="endDate" />
             <TextInput source="plan" />
-            <ReferenceInput source="invoiceItem" reference="invoice_items">
+            <ReferenceInput source="invoiceItem" reference="invoice_items" defaultValue={null}>
                 <SelectInput optionText="title" />
             </ReferenceInput>
             <TextInput source="hoursPerDay" />
