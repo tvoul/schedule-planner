@@ -50,7 +50,6 @@ export const TeacherEdit = () => (
             <TextInput label="Email Address" source="email" type="email" validate={emailValidator} />
             <TextInput source="color" validate={colorValidator} />
             <BooleanInput label="hide" source="hide" defaultValue={0} />
-            <TextInput source="roles" />
         </SimpleForm>
     </Edit>
 );
@@ -67,7 +66,6 @@ export const TeacherCreate = props => (
             <TextInput label="Email Address" source="email" type="email" validate={emailValidator} />
             <TextInput source="color" validate={colorValidator}/>
             <BooleanInput label="hide" source="hide" defaultValue={0} />
-            <TextInput source="roles" />
         </SimpleForm>
     </Create>
 );
