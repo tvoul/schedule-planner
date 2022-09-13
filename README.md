@@ -25,10 +25,7 @@ First you need to install Node Package Manager
 ```
 Start:
 ```bash
-    cd admin && npm run dev
-    cd ..
-    New terminal:
-    cd schedula-data-service && npm start
+    npm run dev
 ```
 
 First you need to run "npm install" (Node Package Manager) in the terminal. Then you need to "cd schedule-data-service" before you use "npm start" to run the project. 
