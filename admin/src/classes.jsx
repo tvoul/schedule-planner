@@ -1,7 +1,8 @@
-import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, SelectInput, ReferenceField} from 'react-admin';
+import {Datagrid, List, TextField, EditButton, BooleanField, Edit, Create, TextInput, BooleanInput,SimpleForm, required, ReferenceInput, SelectInput, UrlField} from 'react-admin';
 //import { TimePicker } from '@mui/x-date-pickers';
 
 // classes m-1 school <ReferenceManyField>
+// Get rid of rowClick="edit" to be able to click blog link smoothly? 
 export const ClassList = () => (
     <List pagination={false}>
         <Datagrid rowClick='edit'>
@@ -9,7 +10,7 @@ export const ClassList = () => (
             <TextField source="name" />
             <TextField source="shortName" />
             <TextField label="school" source="school" />
-            <TextField source="blog" />
+            <UrlField source="blog" />
             <BooleanField source="hide" />
             <TextField source="defaultStartTime" />
             <TextField source="defaultEndTime" />
@@ -47,7 +48,6 @@ export const ClassEdit = () => (
                 <SelectInput optionText="title"/>
             </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
-            <EditButton />
         </SimpleForm>
     </Edit>
 
@@ -69,7 +69,6 @@ export const ClassCreate = props => (
                 <SelectInput optionText="title" defaultValue={null}/>
             </ReferenceInput>
             <TextInput source="defaultHoursPerDay" validate={validator} defaultValue={0} />
-            <EditButton />
         </SimpleForm>
     </Create>
 )

@@ -1,5 +1,5 @@
 import { Datagrid, EmailField, List, TextField, BooleanField, Edit, EditButton, SimpleForm, Create, TextInput, BooleanInput, PasswordInput, required, email } from 'react-admin';
-//import { makeStyles } from '@material-ui/core/styles';
+
 // ?? Need filter for List to be able to serach teachers later on ?? (Different feature)
 export const TeacherList = () => (
     <List pagination={false}>
@@ -11,8 +11,6 @@ export const TeacherList = () => (
             <TextField source="phone" />
             <EmailField source="email" />
             <TextField source="color" />
-            <BooleanField source="hide" />
-            <TextField source="password" />
             <TextField source="roles" />
             <EditButton />
         </Datagrid>
@@ -52,8 +50,6 @@ export const TeacherEdit = () => (
             <TextInput label="Email Address" source="email" type="email" validate={emailValidator} />
             <TextInput source="color" validate={colorValidator} />
             <BooleanInput label="hide" source="hide" defaultValue={0} />
-            <PasswordInput source="password" />
-            <TextInput source="roles" />
         </SimpleForm>
     </Edit>
 );
@@ -63,7 +59,10 @@ export const TeacherEdit = () => (
 export const TeacherCreate = props => (
     <Create {...props}>
         <SimpleForm>
+            <TextInput source="firstname" />
+            <TextInput source="lastname" />
             <TextInput source="initials" validate={initialValidator} />
+            <TextInput source="phone" />
             <TextInput label="Email Address" source="email" type="email" validate={emailValidator} />
             <TextInput source="color" validate={colorValidator}/>
             <BooleanInput label="hide" source="hide" defaultValue={0} />
