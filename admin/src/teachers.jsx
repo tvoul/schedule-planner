@@ -11,8 +11,8 @@ export const TeacherList = () => (
             <TextField source="phone" />
             <EmailField source="email" />
             <TextField source="color" />
-            <BooleanField source="hide" />
-            <TextField source="password" />
+            <BooleanField disabled source="hide" />
+            <TextField disabled source="password" />
             <TextField source="roles" />
             <EditButton />
         </Datagrid>
@@ -63,10 +63,15 @@ export const TeacherEdit = () => (
 export const TeacherCreate = props => (
     <Create {...props}>
         <SimpleForm>
+            <TextInput source="firstname" />
+            <TextInput source="lastname" />
             <TextInput source="initials" validate={initialValidator} />
+            <TextInput source="phone" />
             <TextInput label="Email Address" source="email" type="email" validate={emailValidator} />
             <TextInput source="color" validate={colorValidator}/>
             <BooleanInput label="hide" source="hide" defaultValue={0} />
+            <PasswordInput source="password" />
+            <TextInput source="roles" />
         </SimpleForm>
     </Create>
 );
