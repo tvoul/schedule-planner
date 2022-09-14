@@ -1,4 +1,4 @@
-import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required, ReferenceInput, SelectInput} from 'react-admin';
+import { Datagrid, List, TextField, BooleanField, EditButton, Edit, Create, TextInput, BooleanInput, SimpleForm, required, ReferenceInput, SelectInput, DateInput} from 'react-admin';
 
 
 export const CourseList = () => (
@@ -39,8 +39,8 @@ export const CourseEdit = () => (
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput source="points" />
-            <TextInput source="startDate" />
-            <TextInput source="endDate" />
+            <DateInput source="startDate" />
+            <DateInput source="endDate" />
             <TextInput source="plan" />
             <ReferenceInput source="invoiceItem" reference="invoice_items" defaultValue={null}>
                 <SelectInput  optionText="title" />
@@ -60,8 +60,8 @@ export const CourseCreate = props => (
                 <SelectInput optionText="name" defaultValue={null}/>
             </ReferenceInput>
             <TextInput source="points" />
-            <TextInput source="startDate" />
-            <TextInput source="endDate" />
+            <DateInput source="startDate" />
+            <DateInput source="endDate" />
             <TextInput source="plan" />
             <ReferenceInput source="invoiceItem" reference="invoice_items">
                 <SelectInput optionText="title" defaultValue={null}/>
