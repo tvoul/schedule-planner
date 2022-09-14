@@ -28,7 +28,6 @@ Start:
     npm run dev
 ```
 
-First you need to run "npm install" (Node Package Manager) in the terminal. Then you need to "cd schedule-data-service" before you use "npm start" to run the project. 
 # Branching
 How we are working in branches:
 
