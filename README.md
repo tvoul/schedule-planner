@@ -7,7 +7,7 @@ Hi! The development team for this project consists of:
 - Tomas (tvoul)
 
 
-We communicate on Discord, plan on Miro and keep track of the project through Trello. As a new teammember you get access to these - if you haven't already gotten access ask Tomas (Discord) and Dennis (Trello/Miro).
+We communicate on Discord, plan on Miro and docs and keep track of the project through Trello. As a new teammember you get access to these - if you haven't already gotten access ask Tomas (Discord), Maria(google docs) and Dennis (Trello/Miro).
 # How we work
 In this project we work with scum-metology and have an agile way of thinking. That means that means that we work in sprints and use daily standups to keep track of the work. Dennis is our scrum master and the one to invite and structuring the daily standups. We often meet at nine sharp to talk over what we have done, if we met any problems and what we are going to do during the day. We don’t do problem-solving during these meetings, that’s something we do after in smaller groups. 
 
@@ -28,7 +28,6 @@ Start:
     npm run dev
 ```
 
-First you need to run "npm install" (Node Package Manager) in the terminal. Then you need to "cd schedule-data-service" before you use "npm start" to run the project. 
 # Branching
 How we are working in branches:
 
