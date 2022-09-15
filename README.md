@@ -67,7 +67,27 @@ This project has automated test trough GitHub actions and we are preform two typ
 
  The tests are gathered and automated to run in the test.yml workflow. test.yml are triggerd on pull and push from our protected default branch **dev**.
 
- To be able to merge in to our protected braches all tests need to pass before the it's sent for approval by the codeowners. 
+ To be able to merge in to our protected braches all tests need to pass before the it's sent for approval by the codeowners.
+ 
+ ## Run the tests locally
+ Both API and UI tests can be run locally/manually.
+ Start the app
+ ```bash
+    npm run dev
+```
+ API-tests - import the test files to postman or run directly in the terminal
+ ```bash
+    cd test-api-postman
+    newman run filename-to-run.json
+ ```
+ UI-tests - run in terminal
+ ```bash
+    npx cypress run
+ ```
+ Or open cypress to visually see the tests run
+```bash
+    npm run ui-tests
+```
 
 
 # CD
