@@ -14,6 +14,15 @@ In this project we work with scum-metology and have an agile way of thinking. Th
 # How to get started
 To get started you need to clone the code from the Github repository and open it in your workin tool of choice. 
 
+### Database
+To avoid database commit conflicts we use a template database.
+In the database folder in schedule-data-service, make a copy of template_nodehill_schedule.db and name it nodehill_schedule.db
+```bash
+    cd schedule-data-service
+    cd database
+    cp template_nodehill_schedule.db nodehill_schedule.db
+```
+
 ### Install before start
 First you need to install Node Package Manager
 ```bash
@@ -90,8 +99,8 @@ This project has automated test trough GitHub actions and we are preform two typ
 
 
 # CD
-(Place holder)
-- Feel free to write anything that comes to mind
+Using GitHub Actions, changes made to the Dev branch will automatically deploy to the server, provided that the UI and API tests succeed.
+Please note that if you wish to change something in the database, you will need to update the template database.
 
 ## Ready to go live
 
