@@ -45,7 +45,7 @@ jobs:
     - run: newman run test-api-postman/user-tests.postman_collection.json
     - run: newman run test-api-postman/visitor-test.postman_collection.json
 
-    publish-dev:
+  publish-dev:
     needs: [ui-tests, api-tests]
     runs-on: ubuntu-latest
     steps:
