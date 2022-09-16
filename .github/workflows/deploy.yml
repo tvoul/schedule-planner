@@ -68,9 +68,11 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
 
-      - name: Deploy from dev
+      - name: Pull origin
         run: ssh dev 'cd schedule-planner/ && git fetch && git pull origin dev && npm i'
+      - name: Build
         run: ssh dev 'cd schedule-planner/ && cd admin && npm i && npm run build'
+      - name: Install
         run: ssh dev 'cd schedule-planner/ && cd schedule-data-service && npm i'
 
       - name: Reset database
