@@ -1,6 +1,0 @@
-import './login'
-import './classes'
-import './courses'
-import './invoice_items'
-import './schools'
-import './teachers'
